@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect, useLayoutEffect } from 'react'
 
 interface IEntry {
     title: string;
@@ -6,32 +6,28 @@ interface IEntry {
     text_menual?: string;
 }
 
-const BookingSubEntry: React.FC<IEntry> = ({
+const SubEntryView: React.FC<IEntry> = ({
     title,
     logo,
     text_menual
 }) => {
 
-    const [isLoad,setLoad] = useState(false);
+    const [isLoad, setLoad] = useState(false);
 
-    useEffect(()=>{
-        
-        setTimeout(()=>{
-            document.querySelector('.guideEntry__text_logo')?.classList.add('mounted');
-            setLoad(true);
-        },500)
-       
-    })
-    
+    useLayoutEffect(() => {
+        document.querySelector('.guideEntry__text_logo')?.classList.add('mounted');
+        setLoad(true);
+    }, [])
+
     return (
         <div className="guideEntry">
-             <div className="guideEntry__outer">
-                 <div className="guideEntry__text">
+            <div className="guideEntry__outer">
+                <div className="guideEntry__text">
                     <h1 className="guideEntry__text_title">{title}</h1>
                     <strong className="guideEntry__text_logo">{logo}</strong>
                     <h2 className="guideEntry__text_menual">{text_menual}</h2>
-                 </div>
-                 <div className="guideEntry__arrow">
+                </div>
+                <div className="guideEntry__arrow">
                     <div className="guideEntry__arrow__inner">
                         <div className="guideEntry__arrow__inner_arrow"></div>
                     </div>
@@ -39,11 +35,11 @@ const BookingSubEntry: React.FC<IEntry> = ({
                 <div className={`guideEntry__deco1 ${!isLoad || "load"}`}></div>
                 <div className={`guideEntry__deco2 ${!isLoad || "load"}`}></div>
                 <div className={`guideEntry__deco3 ${!isLoad || "load"}`}></div>
-             </div>
+            </div>
         </div>
     )
 }
 
-export default BookingSubEntry
+export default SubEntryView
 
 
