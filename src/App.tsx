@@ -1,5 +1,5 @@
-import React, { useState, useContext } from "react";
-import { Route, Switch, HashRouter, BrowserRouter } from "react-router-dom";
+import React, { useContext } from "react";
+import { Route, Switch, BrowserRouter } from "react-router-dom";
 import "./normalize.css";
 import { useQuery } from "@apollo/client";
 import { GET_ALL_POST } from "./apollo/query";

@@ -1,8 +1,7 @@
-import React, { Suspense, useState, useEffect, useLayoutEffect } from "react";
+import React, { Suspense, useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import "../scss/guide/guideStyle.scss";
 import Navigation, { TNaviData } from "../components/Nav";
-import { guideData } from "../data/guideData";
 import GuidBody from "./GuidBody";
 import { JDpreloader } from "@janda-com/front";
 import { sharedEntryData } from "../type/const";
@@ -27,7 +26,7 @@ const HighRouter: React.FC<IProps> = ({ bookingData, superClass }) => {
   let text_manual = "";
   switch (superClass) {
     case "booking":
-      text_manual = "부킹 시스템 가이드";
+      text_manual = "부킹 시스템 가이드 2";
       break;
     case "template":
       text_manual = "템플릿 가이드";
