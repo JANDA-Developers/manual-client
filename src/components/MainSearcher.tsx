@@ -1,26 +1,58 @@
-import React, { useState, useMemo } from "react";
-import { JDsearchInput, ISearchViewData } from "@janda-com/front";
+import React, { useState, useContext, useMemo, Fragment } from "react";
+import {
+  JDsearchInput,
+  ISearchViewData,
+  parentScrollMoveToElement,
+} from "@janda-com/front";
 import { IPost } from "../type/interface";
+import { useHistory, Redirect, useLocation, Link } from "react-router-dom";
+import { getFullNameOfSuperClass } from "../utils/utils";
+import { EntryContext } from "../context/entryContext";
+import { updateURLParameter } from "@janda-com/front";
+import { getFromUrl } from "@janda-com/front/build/utils/utils";
+// import { getFromUrl } from "@janda-com/front/build/utils/utils";
 
 interface IProps {
-    data: IPost[];
+  posts: IPost[];
 }
 
-const MainSearcher: React.FC<IProps> = ({ data }) => {
+const MainSearcher: React.FC<IProps> = ({ posts }) => {
+  const history = useHistory();
+  const [search, setSearch] = useState("");
+  const { isLoad, loadChange } = useContext(EntryContext);
 
-    const [search, setSearch] = useState("");
+  const searchData: ISearchViewData[] = useMemo((): ISearchViewData[] => {
+    return posts.map((d) => ({
+      id: d.id,
+      title: d.title,
+      describe: d.body
+        ?.slice(0, 50)
+        .replace(/<[a-zA-Z\/][^>]*>/g, "")
+        .replace(/&n?b?s?p?;?/gi, " "),
+      tag: d.category.label,
+    }));
+  }, [posts]);
 
-    const dataSet: ISearchViewData[] = useMemo((): ISearchViewData[] => {
-        return data.map((d) => ({
-            id: d.id,
-            title: d.title,
-            describe: d.body?.slice(0, 50),
-            tag: d.category.label
-        }))
-    }, [data])
-
-    return <JDsearchInput onSelectData={(d) => { }} dataList={dataSet} searchValue={search} onSearchChange={(v) => { setSearch(v) }} />
-
-}
+  return (
+    <JDsearchInput
+      onSelectData={(d) => {
+        const targetPost = posts.find((data) => data.id === d.id);
+        if (!targetPost) throw Error(`targetPost ${d.id} is not found`);
+        const { superClassRoute } = getFullNameOfSuperClass(
+          targetPost.category
+        );
+        const { name: categoryName } = targetPost.category;
+        history.push(
+          `/${superClassRoute}/${categoryName}?postId=${targetPost.id}`
+        );
+      }}
+      dataList={searchData}
+      searchValue={search}
+      onSearchChange={(v) => {
+        setSearch(v);
+      }}
+    />
+  );
+};
 
 export default MainSearcher;

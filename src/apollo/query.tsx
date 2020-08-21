@@ -2,17 +2,18 @@ import { gql } from "@apollo/client";
 
 export const GET_ALL_POST = gql`
   query AllPosts {
-    allPosts{
+    allPosts {
+      id
+      title
+      headerImage
+      body
+      video
+      category {
         id
-        title
-        headerImage
-        body
-        category {
-          id
-          label
-          name
-          superClass
-        }
+        label
+        name
+        superClass
+      }
     }
   }
 `;

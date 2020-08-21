@@ -1,62 +1,78 @@
-import React, { Suspense, useState, useEffect } from 'react';
-import { Route, Switch } from 'react-router-dom';
-import '../scss/guide/guideStyle.scss';
-import Navigation, { TNaviData } from '../components/Nav';
-import { guideData } from '../data/guideData';
-import BookingSub from './GuidBody';
-import { JDpreloader } from '@janda-com/front';
-import { sharedEntryData } from '../type/const';
-import { ICategory, IPost } from '../type/interface';
-import { getUniqCats, getPostsByCatName } from '../utils/utils';
+import React, { Suspense, useState, useEffect, useLayoutEffect } from "react";
+import { Route, Switch } from "react-router-dom";
+import "../scss/guide/guideStyle.scss";
+import Navigation, { TNaviData } from "../components/Nav";
+import { guideData } from "../data/guideData";
+import GuidBody from "./GuidBody";
+import { JDpreloader } from "@janda-com/front";
+import { sharedEntryData } from "../type/const";
+import { ICategory, IPost } from "../type/interface";
+import {
+  getUniqCats,
+  getPostsByCatName,
+  getFullNameOfSuperClass,
+} from "../utils/utils";
+import { CategorySuperClass } from "../apollo/api";
+import { getFromUrl } from "@janda-com/front";
 
-
-export const BookingEntry = React.lazy(() => import("../components/MainEntry"))
+export const GuideEntry = React.lazy(() => import("../components/MainEntry"));
 
 interface IProps {
-    bookingData: IPost[]
+  bookingData: IPost[];
+  superClass: string;
 }
 
-const HighRouter: React.FC<IProps> = ({ bookingData }) => {
+const HighRouter: React.FC<IProps> = ({ bookingData, superClass }) => {
+  const cateories = getUniqCats(bookingData);
+  let text_manual = "";
+  switch (superClass) {
+    case "booking":
+      text_manual = "부킹 시스템 가이드";
+      break;
+    case "template":
+      text_manual = "템플릿 가이드";
+      break;
+    case "timespace":
+      text_manual = "타임스페이스 가이드";
+      break;
+  }
+  const naviData: TNaviData[] = cateories.map((ct) => {
+    const { superClassRoute, text_manual } = getFullNameOfSuperClass(ct);
 
-    const cateories = getUniqCats(bookingData);
+    return {
+      href: `/${superClassRoute}/${ct.name}`,
+      name: ct.label,
+    };
+  });
 
-    const naviData: TNaviData[] = cateories.map(ct => ({
-        href: ct.name,
-        name: ct.label
-    }))
+  return (
+    <div className="bookingIndex">
+      <Navigation naviData={naviData} />
+      <Switch>
+        <Route
+          exact
+          path={`/${superClass}`}
+          component={() => (
+            <Suspense fallback={<JDpreloader loading page />}>
+              <GuideEntry {...sharedEntryData} text_menual={text_manual} />
+            </Suspense>
+          )}
+        />
+        {cateories.map((ct) => (
+          <Route
+            key={ct.name}
+            path={`/${superClass}/${ct.name}`}
+            component={() => (
+              <GuidBody
+                category={ct}
+                datas={getPostsByCatName(bookingData, ct.name)}
+              />
+            )}
+          />
+        ))}
+      </Switch>
+    </div>
+  );
+};
 
-    return (
-        <div className="bookingIndex">
-            <Navigation
-                naviData={naviData}
-            />
-            <Switch>
-                <Route
-                    exact
-                    path={`/booking`}
-                    component={() => <Suspense fallback={
-                        <JDpreloader loading page />
-                    }>
-                        <BookingEntry
-                            {...sharedEntryData}
-                            text_menual="부킹시스템 메뉴얼"
-                        />
-                    </Suspense>
-                    }
-                />
-                {cateories.map(ct =>
-                    <Route
-                        key={ct.name}
-                        path={`/booking/${ct.name}`}
-                        component={() => <BookingSub
-                            category={ct}
-                            datas={getPostsByCatName(bookingData, ct.name)}
-                        />}
-                    />
-                )}
-            </Switch>
-        </div>
-    )
-}
-
-export default HighRouter
+export default HighRouter;

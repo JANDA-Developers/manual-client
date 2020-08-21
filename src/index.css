@@ -1,21 +1,28 @@
-@import url('https://fonts.googleapis.com/css2??family=Oswald&family=Righteous&display=swap');
+@import url("https://fonts.googleapis.com/css2??family=Oswald&family=Righteous&display=swap");
 
 @font-face {
-  font-family: 'GmarketSansMedium';
-  src: url(./fonts/GmarketSansTTFMedium.ttf) format('truetype');
+  font-family: "GmarketSansMedium";
+  src: url(./fonts/GmarketSansTTFMedium.ttf) format("truetype");
+}
+
+html,
+body,
+#root,
+#JDoutWrapper {
+  overflow-x: visible !important;
 }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
@@ -23,7 +30,9 @@ ul {
   list-style-type: none;
 }
 
-a,a:link,a:visited {
-  color:inherit;
+a,
+a:link,
+a:visited {
+  color: inherit;
   text-decoration: none;
 }

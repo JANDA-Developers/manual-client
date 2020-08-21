@@ -21,6 +21,7 @@ export interface AllPosts_allPosts {
   title: string;
   headerImage: string | null;
   body: string | null;
+  video: string;
   category: AllPosts_allPosts_category;
 }
 
