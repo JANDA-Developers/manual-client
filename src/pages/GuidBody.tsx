@@ -33,12 +33,12 @@ const GuidBody: React.FC<ISub> = ({ datas, category }) => {
 
   return (
     <div>
-      <EntryContextProvider onLoaded={() => {}}>
+      <EntryContextProvider onLoaded={() => { }}>
         <SubEntryView key={s4()} {...dataEntry} />
       </EntryContextProvider>
       <OnImagesLoaded onLoaded={() => infoNav()}>
         {datas.map((d) => (
-          <Guid key={d.id} data={d} />
+          <Guid key={d._id} data={d} />
         ))}
       </OnImagesLoaded>
     </div>

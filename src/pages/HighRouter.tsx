@@ -7,12 +7,10 @@ import { JDpreloader } from "@janda-com/front";
 import { sharedEntryData } from "../type/const";
 import { ICategory, IPost } from "../type/interface";
 import {
-  getUniqCats,
-  getPostsByCatName,
+  getPostsByCatId,
   getFullNameOfSuperClass,
 } from "../utils/utils";
-import { CategorySuperClass } from "../apollo/api";
-import { getFromUrl } from "@janda-com/front";
+import { useCategoryList } from "../hook/useCatList";
 
 export const GuideEntry = React.lazy(() => import("../components/MainEntry"));
 
@@ -22,7 +20,7 @@ interface IProps {
 }
 
 const HighRouter: React.FC<IProps> = ({ bookingData, superClass }) => {
-  const cateories = getUniqCats(bookingData);
+  const { items: cateories } = useCategoryList();
   let text_manual = "";
   switch (superClass) {
     case "booking":
@@ -36,10 +34,10 @@ const HighRouter: React.FC<IProps> = ({ bookingData, superClass }) => {
       break;
   }
   const naviData: TNaviData[] = cateories.map((ct) => {
-    const { superClassRoute, text_manual } = getFullNameOfSuperClass(ct);
+    const { superClassRoute, text_manual } = getFullNameOfSuperClass(ct.superClass);
 
     return {
-      href: `/${superClassRoute}/${ct.name}`,
+      href: `/${superClassRoute}/${ct.label}`,
       name: ct.label,
     };
   });
@@ -59,12 +57,12 @@ const HighRouter: React.FC<IProps> = ({ bookingData, superClass }) => {
         />
         {cateories.map((ct) => (
           <Route
-            key={ct.name}
-            path={`/${superClass}/${ct.name}`}
+            key={ct._id}
+            path={`/${superClass}/${ct._id}`}
             component={() => (
               <GuidBody
                 category={ct}
-                datas={getPostsByCatName(bookingData, ct.name)}
+                datas={getPostsByCatId(bookingData, ct._id)}
               />
             )}
           />

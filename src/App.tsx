@@ -2,9 +2,7 @@ import React, { useContext } from "react";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
 import "./normalize.css";
 import { useQuery } from "@apollo/client";
-import { GET_ALL_POST } from "./apollo/query";
 import { JDpreloader } from "@janda-com/front";
-import { AllPosts, CategorySuperClass } from "./apollo/api";
 import { IPost } from "./type/interface";
 import { filterDataBySuperClass } from "./utils/utils";
 import HomeIndex from "./components/HomeIndex";
@@ -12,21 +10,27 @@ import HighRouter from "./pages/HighRouter";
 import MainSearcher from "./components/MainSearcher";
 import EntryContextProvider from "./context/entryContext";
 import { EntryContext } from "./context/entryContext";
+import { POST_LIST } from "./apollo/query";
+import { postList, postListVariables, SuperClass } from "./apollo/api";
 
 const { version } = require("../package.json");
 
 function App() {
-  const { data, loading } = useQuery<AllPosts>(GET_ALL_POST, {
-    fetchPolicy: "cache-first",
+  const { data, loading } = useQuery<postList, postListVariables>(POST_LIST, {
+    variables: {
+      pagingInput: {
+        pageIndex: 0,
+        pageItemCount: 999
+      }
+    }
   });
 
   const { pathChk } = useContext(EntryContext);
 
   if (loading) return <JDpreloader page />;
-  if (!data?.allPosts) return <div>ERR</div>;
+  if (!data?.PostList) return <div>ERR</div>;
 
-  // @ts-ignore
-  const Data: IPost[] = data.allPosts;
+  const Data: IPost[] = data.PostList.items;
 
   return (
     <EntryContextProvider>
@@ -42,7 +46,7 @@ function App() {
                   superClass="booking"
                   bookingData={filterDataBySuperClass(
                     Data,
-                    CategorySuperClass.BK
+                    SuperClass.BOOKING
                   )}
                 />
               )}
@@ -54,7 +58,7 @@ function App() {
                   superClass="template"
                   bookingData={filterDataBySuperClass(
                     Data,
-                    CategorySuperClass.TA
+                    SuperClass.TEMPLATEA
                   )}
                 />
               )}
@@ -66,7 +70,7 @@ function App() {
                   superClass="timespace"
                   bookingData={filterDataBySuperClass(
                     Data,
-                    CategorySuperClass.TS
+                    SuperClass.TIMESPACE
                   )}
                 />
               )}

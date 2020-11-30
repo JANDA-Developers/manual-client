@@ -1,4 +1,4 @@
-import { AllPosts_allPosts, AllPosts_allPosts_category } from "../apollo/api";
+import {  categoryList_CategoryList_items, postList_PostList_items } from "../apollo/api";
 
-export interface ICategory extends AllPosts_allPosts_category {}
-export interface IPost extends AllPosts_allPosts {}
+export interface ICategory extends categoryList_CategoryList_items {}
+export interface IPost extends postList_PostList_items {}

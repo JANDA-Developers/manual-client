@@ -13,7 +13,6 @@ dotenv.config({
 const client = new ApolloClient({
   uri,
   cache,
-  credentials: "include",
 });
 
 export default client;
