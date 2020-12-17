@@ -43,7 +43,7 @@ function App() {
               path="/booking"
               render={() => (
                 <HighRouter
-                  superClass="booking"
+                  superClass={SuperClass.BOOKING}
                   bookingData={filterDataBySuperClass(
                     Data,
                     SuperClass.BOOKING
@@ -55,7 +55,7 @@ function App() {
               path="/template"
               render={() => (
                 <HighRouter
-                  superClass="template"
+                  superClass={SuperClass.TEMPLATEA}
                   bookingData={filterDataBySuperClass(
                     Data,
                     SuperClass.TEMPLATEA
@@ -67,7 +67,7 @@ function App() {
               path="/timespace"
               render={() => (
                 <HighRouter
-                  superClass="timespace"
+                  superClass={SuperClass.TIMESPACE}
                   bookingData={filterDataBySuperClass(
                     Data,
                     SuperClass.TIMESPACE

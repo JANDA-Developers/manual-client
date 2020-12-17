@@ -11,33 +11,34 @@ import {
   getFullNameOfSuperClass,
 } from "../utils/utils";
 import { useCategoryList } from "../hook/useCatList";
+import { SuperClass } from "../apollo/api";
 
 export const GuideEntry = React.lazy(() => import("../components/MainEntry"));
 
 interface IProps {
   bookingData: IPost[];
-  superClass: string;
+  superClass: SuperClass;
 }
 
 const HighRouter: React.FC<IProps> = ({ bookingData, superClass }) => {
-  const { items: cateories } = useCategoryList();
+  const { items: cateories } = useCategoryList({});
   let text_manual = "";
   switch (superClass) {
-    case "booking":
-      text_manual = "부킹 시스템 가이드 2";
+    case SuperClass.BOOKING:
+      text_manual = "부킹 시스템 가이드 ";
       break;
-    case "template":
+    case SuperClass.TEMPLATEA:
       text_manual = "템플릿 가이드";
       break;
-    case "timespace":
+    case SuperClass.TIMESPACE:
       text_manual = "타임스페이스 가이드";
       break;
   }
-  const naviData: TNaviData[] = cateories.map((ct) => {
-    const { superClassRoute, text_manual } = getFullNameOfSuperClass(ct.superClass);
+  const naviData: TNaviData[] = cateories.filter(cat => cat.superClass === superClass).map((ct) => {
+    const { superClassRoute } = getFullNameOfSuperClass(ct.superClass);
 
     return {
-      href: `/${superClassRoute}/${ct.label}`,
+      href: `/${superClassRoute}/${ct._id}`,
       name: ct.label,
     };
   });
