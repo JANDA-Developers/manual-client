@@ -26,7 +26,7 @@ const HighRouter: React.FC<IProps> = ({ bookingData, superClass }) => {
   let text_manual = "";
   switch (superClass) {
     case "booking":
-      text_manual = "부킹 시스템 가이드 2";
+      text_manual = "부킹 시스템 가이드";
       break;
     case "template":
       text_manual = "템플릿 가이드";

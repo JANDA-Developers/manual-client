@@ -1,4 +1,5 @@
 $font_common1: "GmarketSansMedium";
+$font_common2: "Righteous";
 
 /* ::::::::::::::::::::::::
 
@@ -121,6 +122,17 @@ Common Elements Style Begin
     height: 100vh;
     background: $theme_bgcolor_1;
     transition: transform 500ms;
+  }
+  &__home {
+    position: absolute;
+    top: 1.875rem;
+    left: 1.875rem;
+    color: white;
+    cursor: pointer;
+    border: none;
+    font-size: 1.25rem;
+    font-family: $font_common2;
+    background: transparent;
   }
   &__close {
     position: absolute;
@@ -313,6 +325,18 @@ Common Elements Style Begin
       background: $theme_bgcolor_1;
       transition: transform 500ms;
     }
+    &__home {
+      position: absolute;
+      top: 1.875rem;
+      left: 1.875rem;
+      color: white;
+      cursor: pointer;
+      border: none;
+      font-size: 1.25rem;
+      font-family: $font_common2;
+      background: transparent;
+    }
+
     &__close {
       position: absolute;
       top: 1.875rem;
@@ -473,6 +497,19 @@ Common Elements Style Begin
       background: $theme_bgcolor_1;
       transition: transform 500ms;
     }
+
+    &__home {
+      position: absolute;
+      top: 1.875rem;
+      left: 1.875rem;
+      color: white;
+      cursor: pointer;
+      border: none;
+      font-size: 1vw;
+      font-family: $font_common2;
+      background: transparent;
+    }
+
     &__close {
       position: absolute;
       top: 1.875rem;

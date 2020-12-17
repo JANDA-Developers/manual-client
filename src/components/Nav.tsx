@@ -37,6 +37,9 @@ const Navigation: React.FC<INavi> = ({ naviData }) => {
         >
           닫기
         </button>
+        <Link to="/">
+          <button className="guideNavi__home">Home</button>
+        </Link>
         <ul className="guideNavi__list">
           {naviData.map((nav_list, index) => (
             <li key={index}>

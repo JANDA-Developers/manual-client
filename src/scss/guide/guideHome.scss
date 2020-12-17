@@ -1,4 +1,5 @@
 $theme_color_1: #152743;
+
 @mixin bgImg {
   background-size: cover;
   background-repeat: no-repeat;
@@ -11,6 +12,7 @@ $theme_color_1: #152743;
   flex-direction: column;
   height: 100vh;
   &__bgtext {
+    display: none;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -30,62 +32,71 @@ $theme_color_1: #152743;
   }
   &__block {
     position: relative;
+    padding: 3.125rem 0;
     width: 100%;
     height: 100%;
     flex: 1;
     transition: flex 500ms;
 
     &:hover {
-      .guideHome__block__textWrap {
-        strong {
+      .guideHome__blockText {
+        h3 {
           letter-spacing: 0.125rem;
         }
         p {
           &:before {
             content: "";
-            width: 100%;
+            // width: 100%;
           }
         }
       }
     }
-    &__img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      @include bgImg;
+  }
+
+  &__blockImg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    @include bgImg;
+  }
+
+  &__blockText {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    color: $theme_color_1;
+    img {
+      margin-bottom: 1rem;
     }
-    &__textWrap {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      height: 100%;
-      color: $theme_color_1;
-      strong {
-        display: block;
-        margin-bottom: 0.625rem;
-        font-size: 3rem;
-        font-family: "Righteous";
-        transition: letter-spacing 300ms;
-      }
-      p {
-        position: relative;
-        font-size: 1.0625rem;
-        font-family: "GmarketSansMedium";
-        &:before {
-          content: "";
-          position: absolute;
-          left: 50%;
-          bottom: -5px;
-          transform: translateX(-50%);
-          width: 0%;
-          height: 2px;
-          background: $theme_color_1;
-          transition: width 300ms cubic-bezier(0, 0.55, 0.45, 1);
-        }
+    h3 {
+      display: block;
+      margin-bottom: 0.625rem;
+      font-size: 3rem;
+      font-family: "Roboto";
+      transition: letter-spacing 300ms;
+    }
+    p {
+      position: relative;
+      margin-bottom: 1.25rem;
+      font-size: 1.25rem;
+      line-height: 1.5em;
+      font-family: "GmarketSansMedium";
+      text-align: center;
+      &:before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: -5px;
+        transform: translateX(-50%);
+        width: 0%;
+        height: 2px;
+        background: $theme_color_1;
+        transition: width 300ms cubic-bezier(0, 0.55, 0.45, 1);
       }
     }
   }
@@ -118,64 +129,72 @@ $theme_color_1: #152743;
         font-family: "Righteous";
       }
     }
+
     &__block {
       position: relative;
+      padding: 0;
       width: 100%;
       height: 100%;
       flex: 1;
       transition: flex 500ms;
 
       &:hover {
-        .guideHome__block__textWrap {
-          strong {
+        .guideHome__blockText {
+          h3 {
             letter-spacing: 0.125rem;
           }
           p {
             &:before {
               content: "";
-              width: 100%;
+              // width: 100%;
             }
           }
         }
       }
-      &__img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        @include bgImg;
+    }
+
+    &__blockImg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      @include bgImg;
+    }
+
+    &__blockText {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      padding-top: 25%;
+      width: 100%;
+      height: 100%;
+      color: $theme_color_1;
+      h3 {
+        display: block;
+        margin-bottom: 1.5rem;
+        font-size: 2.5rem;
+        font-family: "Roboto";
+        font-weight: 100;
+        transition: letter-spacing 300ms;
       }
-      &__textWrap {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 100%;
-        color: $theme_color_1;
-        strong {
-          display: block;
-          margin-bottom: 0.625rem;
-          font-size: 3rem;
-          font-family: "Righteous";
-          transition: letter-spacing 300ms;
-        }
-        p {
-          position: relative;
-          font-size: 1.0625rem;
-          font-family: "GmarketSansMedium";
-          &:before {
-            content: "";
-            position: absolute;
-            left: 50%;
-            bottom: -5px;
-            transform: translateX(-50%);
-            width: 0%;
-            height: 2px;
-            background: $theme_color_1;
-            transition: width 300ms cubic-bezier(0, 0.55, 0.45, 1);
-          }
+      p {
+        position: relative;
+        margin-bottom: 2.5rem;
+        font-size: 1.0625rem;
+        font-family: "GmarketSansMedium";
+        line-height: 1.3rem;
+        &:before {
+          content: "";
+          position: absolute;
+          left: 50%;
+          bottom: -5px;
+          transform: translateX(-50%);
+          width: 0%;
+          height: 2px;
+          background: $theme_color_1;
+          transition: width 300ms cubic-bezier(0, 0.55, 0.45, 1);
         }
       }
     }

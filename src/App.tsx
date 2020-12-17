@@ -15,10 +15,13 @@ import { EntryContext } from "./context/entryContext";
 
 const { version } = require("../package.json");
 
+const lastVersion = localStorage.getItem("version");
+
 function App() {
   const { data, loading } = useQuery<AllPosts>(GET_ALL_POST, {
-    fetchPolicy: "cache-first",
+    fetchPolicy: lastVersion !== version ? "network-only" : "cache-first",
   });
+  localStorage.setItem("version", version);
 
   const { pathChk } = useContext(EntryContext);
 
