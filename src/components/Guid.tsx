@@ -16,17 +16,17 @@ const Guid: React.FC<BookingHome> = ({ data }) => {
   };
 
   return (
-    <div id={"infonav" + data.id} className="bookingHome guideInfo">
+    <div id={"infonav" + data._id} className="bookingHome guideInfo">
       <div className="bookingHome__outer guideInfo__outer">
         <h2 className="guideInfo__title">{data.title}</h2>
 
         <div className="guideInfo__body">
-          {data.headerImage && (
+          {/* {data.headerImage && (
             <img
               src={Sotrage + data.headerImage}
               className="guideInfo__con__list__img"
             />
-          )}
+          )} */}
           {data.body && (
             <div
               dangerouslySetInnerHTML={{
@@ -41,7 +41,7 @@ const Guid: React.FC<BookingHome> = ({ data }) => {
             containerClassName="guideInfo__body-video"
             opts={opts}
           /> */}
-
+          {/* 
           {data.video && (
             <div className="guideInfo__body-video">
               <YouTube
@@ -51,7 +51,7 @@ const Guid: React.FC<BookingHome> = ({ data }) => {
                 opts={opts}
               />
             </div>
-          )}
+          )} */}
         </div>
       </div>
     </div>

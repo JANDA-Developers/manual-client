@@ -1,0 +1,131 @@
+
+$theme_color_1: #152743;
+
+.guideList {
+    position:relative;
+    font-family: "GmarketSansMedium";
+
+    &__side {
+        position:fixed; z-index:10;
+        top:0; left:0;
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width:40%; 
+        height:100vh;
+        text-align:center;
+        background:white;
+        transform:translateX(-100%);
+        &.on {
+            transition-delay:500ms;
+            transition:transform 500ms;
+            transform:translateX(0);
+        }
+    }
+
+    &__sideLogo {
+        margin-bottom:3.125rem;
+        width:50%;
+    }
+
+    &__sideTitle {
+        margin-bottom:1.875rem;
+        font-size:4.375rem;
+        
+    }
+
+    &__sideIntro {
+        font-size:1.875rem;
+        line-height:1.5em;
+        &:nth-child(2) {
+            font-size:2.5rem;
+        }
+    }
+
+
+    &__sideLink {
+        display:block;
+        margin-top:1.875rem;
+        font-size:1.5625rem;
+        padding:0.9375rem 1.875rem 0.625rem 1.875rem;
+        border-radius:1.875rem;
+        color:#ffffff !important;
+        background:$theme_color_1;
+        border:2px solid $theme_color_1;
+        transition:background 500ms;
+        &:hover {
+            color:$theme_color_1 !important;
+            background:transparent;
+        }
+    }
+
+    .guideListWrap {
+        display:flex;
+        flex-wrap: wrap;
+        position:relative;
+        margin-left:40%;
+        width:60%;
+    }
+
+    &__block {
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      width: 50%; height:100vh;
+      text-align: center;
+    }
+
+    &__blockLink:hover {
+
+        .guideList__blockTitle {
+            &:before {
+                transform:translate(-50%, 0) scaleX(1);
+            }
+        }
+    
+    }
+
+    &__blockIcon {
+        margin-bottom:20px;
+        height:50px;
+    }
+
+    &__blockTitle {
+        position:relative;
+        margin-bottom:0.9375rem;
+        font-size:2.1875rem;
+        &:before {
+            content:"";
+            position:absolute;
+            bottom:-2px; left:50%; 
+            transform:translate(-50%, 0) scaleX(0);
+            width:100%; height:2px;
+            background:$theme_color_1;
+            transition:transform 300ms;
+        }
+    }
+
+    &__blockDesc {
+        font-size:1.25rem;
+    }
+
+}
+
+
+@media screen and (min-width:600px) {
+
+
+}
+
+
+@media screen and (min-width:1024px) {
+
+    
+}
+
+
+@media screen and (min-width:1680px) {
+
+    
+}

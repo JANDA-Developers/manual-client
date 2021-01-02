@@ -2,9 +2,7 @@ import React, { useContext } from "react";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
 import "./normalize.css";
 import { useQuery } from "@apollo/client";
-import { GET_ALL_POST } from "./apollo/query";
 import { JDpreloader } from "@janda-com/front";
-import { AllPosts, CategorySuperClass } from "./apollo/api";
 import { IPost } from "./type/interface";
 import { filterDataBySuperClass } from "./utils/utils";
 import HomeIndex from "./components/HomeIndex";
@@ -12,24 +10,31 @@ import HighRouter from "./pages/HighRouter";
 import MainSearcher from "./components/MainSearcher";
 import EntryContextProvider from "./context/entryContext";
 import { EntryContext } from "./context/entryContext";
+import { POST_LIST } from "./apollo/query";
+import { postList, postListVariables, SuperClass } from "./apollo/api";
+import GuideList from "./components/GuideList";
 
 const { version } = require("../package.json");
-
 const lastVersion = localStorage.getItem("version");
 
 function App() {
-  const { data, loading } = useQuery<AllPosts>(GET_ALL_POST, {
-    fetchPolicy: lastVersion !== version ? "network-only" : "cache-first",
+
+  const { data, loading } = useQuery<postList, postListVariables>(POST_LIST, {
+    variables: {
+      pagingInput: {
+        pageIndex: 0,
+        pageItemCount: 999
+      }
+    }
   });
   localStorage.setItem("version", version);
 
   const { pathChk } = useContext(EntryContext);
 
   if (loading) return <JDpreloader page />;
-  if (!data?.allPosts) return <div>ERR</div>;
+  if (!data?.PostList) return <div>ERR</div>;
 
-  // @ts-ignore
-  const Data: IPost[] = data.allPosts;
+  const Data: IPost[] = data.PostList.items;
 
   return (
     <EntryContextProvider>
@@ -39,13 +44,18 @@ function App() {
           <Switch>
             <Route path="/" exact render={() => <HomeIndex />}></Route>
             <Route
+              exact
+              path='/guideBooking'
+              component={GuideList}
+            />
+            <Route
               path="/booking"
               render={() => (
                 <HighRouter
-                  superClass="booking"
+                  superClass={SuperClass.BOOKING}
                   bookingData={filterDataBySuperClass(
                     Data,
-                    CategorySuperClass.BK
+                    SuperClass.BOOKING
                   )}
                 />
               )}
@@ -54,10 +64,10 @@ function App() {
               path="/template"
               render={() => (
                 <HighRouter
-                  superClass="template"
+                  superClass={SuperClass.TEMPLATEA}
                   bookingData={filterDataBySuperClass(
                     Data,
-                    CategorySuperClass.TA
+                    SuperClass.TEMPLATEA
                   )}
                 />
               )}
@@ -66,10 +76,10 @@ function App() {
               path="/timespace"
               render={() => (
                 <HighRouter
-                  superClass="timespace"
+                  superClass={SuperClass.TIMESPACE}
                   bookingData={filterDataBySuperClass(
                     Data,
-                    CategorySuperClass.TS
+                    SuperClass.TIMESPACE
                   )}
                 />
               )}

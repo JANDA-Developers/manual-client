@@ -1,4 +1,4 @@
-$theme_color_1: #152743;
+$color_theme1: #152743;
 
 @mixin bgImg {
   background-size: cover;
@@ -6,200 +6,234 @@ $theme_color_1: #152743;
   background-position: 50% 50%;
 }
 
-.guideHome {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  &__bgtext {
-    display: none;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 0.2;
-    color: $theme_color_1;
-    text-align: center;
-    h1 {
-      font-size: 8vw;
-      font-family: "GmarketSansMedium";
-      white-space: nowrap;
-    }
-    h2 {
-      font-size: 20vw;
-      font-family: "Righteous";
-    }
-  }
-  &__block {
-    position: relative;
-    padding: 3.125rem 0;
-    width: 100%;
-    height: 100%;
-    flex: 1;
-    transition: flex 500ms;
 
-    &:hover {
-      .guideHome__blockText {
-        h3 {
-          letter-spacing: 0.125rem;
-        }
-        p {
-          &:before {
-            content: "";
-            // width: 100%;
-          }
-        }
-      }
-    }
-  }
-
-  &__blockImg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    @include bgImg;
-  }
-
-  &__blockText {
-    display: flex;
+.home {
+    position:relative;
+    display:flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    color: $theme_color_1;
-    img {
-      margin-bottom: 1rem;
-    }
-    h3 {
-      display: block;
-      margin-bottom: 0.625rem;
-      font-size: 3rem;
-      font-family: "Roboto";
-      transition: letter-spacing 300ms;
-    }
-    p {
-      position: relative;
-      margin-bottom: 1.25rem;
-      font-size: 1.25rem;
-      line-height: 1.5em;
-      font-family: "GmarketSansMedium";
-      text-align: center;
-      &:before {
-        content: "";
-        position: absolute;
-        left: 50%;
-        bottom: -5px;
-        transform: translateX(-50%);
-        width: 0%;
-        height: 2px;
-        background: $theme_color_1;
-        transition: width 300ms cubic-bezier(0, 0.55, 0.45, 1);
-      }
-    }
-  }
-}
-
-@media screen and (min-width: 600px) {
-}
-
-@media screen and (min-width: 1024px) {
-  .guideHome {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    height: 100vh;
-    &__bgtext {
-      position: absolute;
-      top: 55%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      opacity: 0.3;
-      color: $theme_color_1;
-      text-align: center;
-      h1 {
-        font-size: 4rem;
-        font-family: "GmarketSansMedium";
-        white-space: nowrap;
-      }
-      h2 {
-        font-size: 10rem;
-        font-family: "Righteous";
-      }
-    }
-
-    &__block {
-      position: relative;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-      flex: 1;
-      transition: flex 500ms;
-
-      &:hover {
-        .guideHome__blockText {
-          h3 {
-            letter-spacing: 0.125rem;
-          }
-          p {
-            &:before {
-              content: "";
-              // width: 100%;
-            }
-          }
-        }
-      }
-    }
-
-    &__blockImg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      @include bgImg;
-    }
-
-    &__blockText {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
+    &__bgWrap {
+      display:flex;
+      justify-content: center;
       align-items: center;
-      padding-top: 25%;
-      width: 100%;
-      height: 100%;
-      color: $theme_color_1;
-      h3 {
-        display: block;
-        margin-bottom: 1.5rem;
-        font-size: 2.5rem;
-        font-family: "Roboto";
-        font-weight: 100;
-        transition: letter-spacing 300ms;
-      }
-      p {
-        position: relative;
-        margin-bottom: 2.5rem;
-        font-size: 1.0625rem;
-        font-family: "GmarketSansMedium";
-        line-height: 1.3rem;
-        &:before {
-          content: "";
-          position: absolute;
-          left: 50%;
-          bottom: -5px;
-          transform: translateX(-50%);
-          width: 0%;
-          height: 2px;
-          background: $theme_color_1;
-          transition: width 300ms cubic-bezier(0, 0.55, 0.45, 1);
-        }
+      position:absolute; z-index:10;
+      top:0; left:0; right:0; bottom:0;
+      color:$color_theme1;
+      background:white;
+      &.off {
+        animation:loadingOff 2000ms 2000ms forwards;
       }
     }
-  }
+
+    &__bgText {
+      font-family: "GmarketSansMedium";
+    }
+
+    &__bgTitleWrap {
+      text-align:center;
+      color:$color_theme1;
+    }
+
+    &__bgTitle {
+      display:block;
+      margin-bottom:2.25rem;
+      font-size:10vw;
+      line-height:1.3em;
+    }
+
+    &__bgSubTitle {
+      display:block;
+      font-size:15vw;
+    }
+
+    .homeBlock {
+      display:flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      width:100%;
+      height:50vh;
+
+      &__svg {
+        width:50px;
+        stroke: $color_theme1;
+      }
+
+      &__link {
+        font-family: "GmarketSansMedium";
+        text-align:center;
+        color:$color_theme1;
+      }
+
+      &__title {
+        margin-bottom:1.25rem;
+        font-size:10vw;
+      }
+
+      &__desc {
+        margin-bottom:2.5rem;
+        font-size:5vw;
+      }
+
+      &__arrow {
+        width:7.5rem;
+      }
+
+
+    }
+
+
 }
 
-@media screen and (min-width: 1600px) {
+
+@media screen and (min-width:600px) {
+
+  .home {
+
+    .homeBlock {
+      display:flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      width:100%;
+      height:50vh;
+
+      &__svg {
+        width:70px;
+        stroke: $color_theme1;
+      }
+
+    }
+
+  }
+
+}
+
+
+@media screen and (min-width:1024px) {
+  
+  .home {
+    position:relative;
+    display:flex;
+    flex-direction:row;
+      &__bgWrap {
+        &.off {
+          animation:loadingOff 2000ms 2000ms forwards;
+        }
+      }
+
+      &__bgTitleWrap {
+        text-align:center;
+      }
+
+      &__bgTitle {
+        display:block;
+        margin-bottom:1.25rem;
+        font-size:3.5rem;
+        line-height:1.3em;
+      }
+
+      &__bgSubTitle {
+        display:block;
+        font-size:6.5rem;
+      }
+
+      .homeBlock {
+        display:flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width:50%;
+        height:100vh;
+
+        &__svg {
+          width:70px;
+        }
+
+        &__link {
+          padding:50px;
+          transition:box-shadow 300ms;
+          &:hover {
+            box-shadow: 10px 10px 16px -6px rgba(102,102,102,1);
+          }
+        }
+
+        &__title {
+          margin-bottom:1.25rem;
+          font-size:3.75rem;
+        }
+
+        &__desc {
+          margin-bottom:2.5rem;
+          font-size:1.50rem;
+        }
+
+        &__arrow {
+          width:7.5rem;
+        }
+
+      }
+
+  }
+
+}
+
+
+@media screen and (min-width:1680px) {
+
+ .home {
+    position:relative;
+    display:flex;
+    flex-direction: row;
+
+
+      &__bgTitle {
+        font-size:3.5rem;
+      }
+
+      &__bgSubTitle {
+        font-size:6.5rem;
+      }
+
+      .homeBlock {
+
+        &__svg {
+          width:100px;
+        }
+
+        &__title {
+          margin-bottom:1.25rem;
+          font-size:4rem;
+        }
+
+        &__desc {
+          margin-bottom:2.5rem;
+          font-size:2rem;
+        }
+
+        &__arrow {
+          width:7.5rem;
+        }
+
+      }
+      
+  }
+  
+}
+
+
+@keyframes loadingOff {
+
+  0% {
+    opacity:1;
+  }
+
+  50% {
+    opacity:0;
+  }
+
+  100% {
+    opacity:0;
+    z-index:-1;
+  }
+
 }

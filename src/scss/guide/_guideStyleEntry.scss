@@ -16,6 +16,7 @@
     color: $theme_color_1;
     &_title {
       font-size: 6vw;
+      line-height:1.5em;
       white-space: nowrap;
       text-transform: uppercase;
     }
@@ -149,7 +150,9 @@
 }
 
 @media screen and (min-width: 600px) {
+
   .guideEntry {
+
     &__outer {
       position: relative;
       height: 100vh;
@@ -162,7 +165,6 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-family: "GmarketSansMedium";
       text-align: center;
       color: $theme_color_1;
       &_title {
@@ -172,7 +174,6 @@
       &_logo {
         position: relative;
         font-size: 15vw;
-        font-family: "Righteous", cursive;
         &.mounted {
           &:before {
             width: 100%;
@@ -310,7 +311,6 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-family: "GmarketSansMedium";
       text-align: center;
       color: $theme_color_1;
       &_title {
@@ -320,7 +320,6 @@
       &_logo {
         position: relative;
         font-size: 8.25rem;
-        font-family: "Righteous", cursive;
         &.mounted {
           &:before {
             width: 100%;
@@ -430,5 +429,7 @@
   }
 }
 
-@media screen and (min-width: 1550px) {
+@media screen and (min-width: 1680px) {
+
+  
 }

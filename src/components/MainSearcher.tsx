@@ -23,27 +23,25 @@ const MainSearcher: React.FC<IProps> = ({ posts }) => {
 
   const searchData: ISearchViewData[] = useMemo((): ISearchViewData[] => {
     return posts.map((d) => ({
-      id: d.id,
+      id: d._id,
       title: d.title,
       describe: d.body
         ?.slice(0, 50)
         .replace(/<[a-zA-Z\/][^>]*>/g, "")
         .replace(/&n?b?s?p?;?/gi, " "),
-      tag: d.category.label,
+      tag: d.category?.label,
     }));
   }, [posts]);
 
   return (
     <JDsearchInput
       onSelectData={(d) => {
-        const targetPost = posts.find((data) => data.id === d.id);
+        const targetPost = posts.find((data) => data._id === d.id);
         if (!targetPost) throw Error(`targetPost ${d.id} is not found`);
-        const { superClassRoute } = getFullNameOfSuperClass(
-          targetPost.category
-        );
-        const { name: categoryName } = targetPost.category;
+        if (!targetPost.category) return;
+        const { _id, superClass } = targetPost.category;
         history.push(
-          `/${superClassRoute}/${categoryName}?postId=${targetPost.id}`
+          `/${superClass}/${_id}?postId=${targetPost._id}`
         );
       }}
       dataList={searchData}

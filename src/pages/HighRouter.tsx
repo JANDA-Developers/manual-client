@@ -7,39 +7,39 @@ import { JDpreloader } from "@janda-com/front";
 import { sharedEntryData } from "../type/const";
 import { ICategory, IPost } from "../type/interface";
 import {
-  getUniqCats,
-  getPostsByCatName,
+  getPostsByCatId,
   getFullNameOfSuperClass,
 } from "../utils/utils";
-import { CategorySuperClass } from "../apollo/api";
-import { getFromUrl } from "@janda-com/front";
+import { useCategoryList } from "../hook/useCatList";
+import { SuperClass } from "../apollo/api";
+import GuideList from "../components/GuideList";
 
 export const GuideEntry = React.lazy(() => import("../components/MainEntry"));
 
 interface IProps {
   bookingData: IPost[];
-  superClass: string;
+  superClass: SuperClass;
 }
 
 const HighRouter: React.FC<IProps> = ({ bookingData, superClass }) => {
-  const cateories = getUniqCats(bookingData);
+  const { items: cateories } = useCategoryList({});
   let text_manual = "";
   switch (superClass) {
-    case "booking":
-      text_manual = "부킹 시스템 가이드";
+    case SuperClass.BOOKING:
+      text_manual = "부킹 시스템 가이드 ";
       break;
-    case "template":
+    case SuperClass.TEMPLATEA:
       text_manual = "템플릿 가이드";
       break;
-    case "timespace":
+    case SuperClass.TIMESPACE:
       text_manual = "타임스페이스 가이드";
       break;
   }
-  const naviData: TNaviData[] = cateories.map((ct) => {
-    const { superClassRoute, text_manual } = getFullNameOfSuperClass(ct);
+  const naviData: TNaviData[] = cateories.filter(cat => cat.superClass === superClass).map((ct) => {
+    const { superClassRoute } = getFullNameOfSuperClass(ct.superClass);
 
     return {
-      href: `/${superClassRoute}/${ct.name}`,
+      href: `/${superClassRoute}/${ct._id}`,
       name: ct.label,
     };
   });
@@ -48,6 +48,7 @@ const HighRouter: React.FC<IProps> = ({ bookingData, superClass }) => {
     <div className="bookingIndex">
       <Navigation naviData={naviData} />
       <Switch>
+
         <Route
           exact
           path={`/${superClass}`}
@@ -57,14 +58,15 @@ const HighRouter: React.FC<IProps> = ({ bookingData, superClass }) => {
             </Suspense>
           )}
         />
+
         {cateories.map((ct) => (
           <Route
-            key={ct.name}
-            path={`/${superClass}/${ct.name}`}
+            key={ct._id}
+            path={`/${superClass}/${ct._id}`}
             component={() => (
               <GuidBody
                 category={ct}
-                datas={getPostsByCatName(bookingData, ct.name)}
+                datas={getPostsByCatId(bookingData, ct._id)}
               />
             )}
           />
