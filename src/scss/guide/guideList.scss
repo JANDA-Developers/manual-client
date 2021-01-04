@@ -1,4 +1,10 @@
 
+@mixin bgImg {
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-position:50% 50%;
+}
+
 $theme_color_1: #152743;
 
 .guideList {
@@ -12,6 +18,7 @@ $theme_color_1: #152743;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        padding:0 20px;
         width:40%; 
         height:100vh;
         text-align:center;
@@ -60,7 +67,7 @@ $theme_color_1: #152743;
         }
     }
 
-    .guideListWrap {
+    .guideBlockWrap {
         display:flex;
         flex-wrap: wrap;
         position:relative;
@@ -69,11 +76,49 @@ $theme_color_1: #152743;
     }
 
     &__block {
-      display:flex;
-      justify-content: center;
-      align-items: center;
-      width: 50%; height:100vh;
+      position:relative;
+      width: 50%; height:90vh; min-height:500px;
       text-align: center;
+      color:$theme_color_1;
+
+      &.full {
+          height:100vh;
+      }
+
+      &:hover {
+          color:white;
+          .guideList__blockTitle {
+            &:before {
+                background:#ffffff;
+            }
+          }
+          .guideList__blockIcon {
+            fill:#ffffff;
+            transition:fill 300ms; 
+          }
+          .guideList__blockImg {
+            opacity:0.9;
+          }
+      }
+
+    }
+
+    &__blockImg {
+        position:absolute;
+        top:0; left:0;
+        width:100%; height:100%;
+        @include bgImg;
+        opacity:0;
+        transition:opacity 300ms;
+    }
+
+    &__blockLink {
+        position:relative;
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width:100%; height:100%;
     }
 
     &__blockLink:hover {
@@ -89,12 +134,14 @@ $theme_color_1: #152743;
     &__blockIcon {
         margin-bottom:20px;
         height:50px;
+        fill:$theme_color_1;
     }
 
     &__blockTitle {
         position:relative;
         margin-bottom:0.9375rem;
         font-size:2.1875rem;
+        transition:color 300ms;
         &:before {
             content:"";
             position:absolute;
@@ -108,6 +155,7 @@ $theme_color_1: #152743;
 
     &__blockDesc {
         font-size:1.25rem;
+        transition:color 300ms;
     }
 
 }

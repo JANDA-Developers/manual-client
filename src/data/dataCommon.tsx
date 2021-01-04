@@ -22,12 +22,13 @@ export const dataEntry = [
           </svg>`,
 
   }
-]
+];
 
 
 export const dataBookingList = [
   {
     link: "booking",
+    bgImg: "bookingsolution_bg.jpg",
     title: "잔다 부킹",
     desc: "잔다에서 제공하는<br /> 잔다 부킹 솔루션 가이드",
     icon: `<svg viewBox="0 0 50 50" class="guideList__blockIcon">
@@ -40,6 +41,7 @@ export const dataBookingList = [
   },
   {
     link: "timespace",
+    bgImg: "timespace_bg.jpg",
     title: "타임스페이스",
     desc: "<span>잔다에서 제공하는 <br />홈페이지 템플릿 가이드<span>",
     icon: `<svg viewBox="0 0 50 50" class="guideList__blockIcon">
@@ -50,6 +52,7 @@ export const dataBookingList = [
   },
   {
     link: "timespace",
+    bgImg: "bookinglight_bg.jpg",
     title: "부킹 라이트",
     desc: "<span>잔다에서 제공하는 <br />홈페이지 템플릿 가이드<span>",
     icon: `<svg viewBox="0 0 50 50" class="guideList__blockIcon">
@@ -58,9 +61,7 @@ export const dataBookingList = [
           </svg>`,
 
   }
-]
-
-
+];
 
 
 export const dataGuideList = {

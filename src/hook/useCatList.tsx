@@ -17,7 +17,7 @@ export const useCategoryList = ({
     initialPageIndex = 0,
     initialSort = [],
     initialFilter = {},
-    initialViewCount = 20,
+    initialViewCount = 9999,
     options = {}
 }: IuseItemListProp = {}): IuseCategoryList => {
     const { variables: overrideVariables, ...ops } = options;

@@ -1,3 +1,4 @@
+import { url } from 'inspector';
 import React, { useState, useEffect } from 'react'
 import { Link } from "react-router-dom";
 import { dataBookingList } from '../data/dataCommon'
@@ -6,10 +7,13 @@ import '../scss/guide/guideList.scss'
 const GuideList: React.FC = () => {
     const [sideState, setSideState] = useState(false);
     const [scrollDown, setScrollDown] = useState(false);
+    const [heightFull, setHeightFull] = useState(false);
 
     useEffect(() => {
         if (dataBookingList.length > 2) {
             setScrollDown(true);
+        } else {
+            setHeightFull(true);
         }
         setSideState(true);
     }, []);
@@ -28,17 +32,13 @@ const GuideList: React.FC = () => {
                     <a href="" className="guideList__sideLink" target="_blank">
                         사이트 바로가기
                     </a>
-                    {
-                        scrollDown &&
-                        <div>scrollDown
-                            </div>
-                    }
                 </div>
             </section>
-            <section className="guideListWrap">
+            <section className="guideBlockWrap">
                 {
                     dataBookingList.map((guideList) => {
-                        return <div className="guideList__block">
+                        return <div className={`guideList__block ${heightFull && 'full'}`}>
+                            <div className="guideList__blockImg" style={{ backgroundImage: `url(/img/booking/common/${guideList.bgImg})` }}></div>
                             <Link to={guideList.link} className="guideList__blockLink">
                                 <div className="guideList__blockIconWrap"
                                     dangerouslySetInnerHTML={{ __html: guideList.icon }}></div>
