@@ -12,6 +12,7 @@ fragment Fuser on User {
 }
 `;
 
+
 const F_POST = gql`
   fragment Fpost on Post {
     _id
@@ -22,6 +23,11 @@ const F_POST = gql`
     author {
       name
     }
+    hyperClass {
+      _id
+      type
+      label
+    }
     category {
       superClass
       label
@@ -30,13 +36,21 @@ const F_POST = gql`
   }
 `;
 
+
 const F_CATEOGRY = gql`
 fragment Fcategory on Category {
-_id
-createdAt
-updatedAt
-label
-superClass
+  _id
+  createdAt
+  updatedAt
+  label
+  superClass
+  hyperClass {
+    _id
+    createdAt
+    updatedAt
+    label    
+    type
+  }
 }`;
 
 
@@ -47,6 +61,7 @@ fragment FoffsetPagingInfo on OffsetPagingInfo {
   currentItemCount
   totalPageCount
 }`
+
 
 export const CATEGORY_LIST = gql`
   query categoryList(
@@ -66,6 +81,7 @@ export const CATEGORY_LIST = gql`
 ${F_OFFSET_PAGEING_INFO}
 ${F_CATEOGRY}
 `;
+
 
 export const POST_LIST = gql`
 query postList(

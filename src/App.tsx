@@ -13,6 +13,7 @@ import { EntryContext } from "./context/entryContext";
 import { POST_LIST } from "./apollo/query";
 import { postList, postListVariables, SuperClass } from "./apollo/api";
 import GuideList from "./components/GuideList";
+import Test from "./components/Test";
 
 const { version } = require("../package.json");
 const lastVersion = localStorage.getItem("version");
@@ -43,16 +44,22 @@ function App() {
           {pathChk && <MainSearcher posts={Data} />}
           <Switch>
             <Route path="/" exact render={() => <HomeIndex />}></Route>
+            {/* <Route
+              exact
+              path='/타임스페이스 A'
+              component={Test}
+            /> */}
             <Route
               exact
               path='/guideBooking'
               component={GuideList}
             />
             <Route
-              path="/booking"
+              path="/부킹"
               render={() => (
                 <HighRouter
-                  superClass={SuperClass.BOOKING}
+                  // superClass={SuperClass.BOOKING}
+                  superClass={'부킹'}
                   bookingData={filterDataBySuperClass(
                     Data,
                     SuperClass.BOOKING
@@ -61,10 +68,10 @@ function App() {
               )}
             ></Route>
             <Route
-              path="/template"
+              path="/템플릿A"
               render={() => (
                 <HighRouter
-                  superClass={SuperClass.TEMPLATEA}
+                  superClass={'템플릿A'}
                   bookingData={filterDataBySuperClass(
                     Data,
                     SuperClass.TEMPLATEA
@@ -73,10 +80,10 @@ function App() {
               )}
             ></Route>
             <Route
-              path="/timespace"
+              path="/타임스페이스"
               render={() => (
                 <HighRouter
-                  superClass={SuperClass.TIMESPACE}
+                  superClass={'타임스페이스'}
                   bookingData={filterDataBySuperClass(
                     Data,
                     SuperClass.TIMESPACE

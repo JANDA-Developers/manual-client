@@ -27,13 +27,29 @@ export interface categoryList_CategoryList_pageInfo {
   totalPageCount: number;
 }
 
+export interface categoryList_CategoryList_items_hyperClass {
+  __typename: "HyperClass";
+  _id: any;
+  createdAt: any;
+  updatedAt: any;
+  label: string;
+  type: string;
+}
+
 export interface categoryList_CategoryList_items {
   __typename: "Category";
   _id: any;
   createdAt: any;
   updatedAt: any;
   label: string;
+  /**
+   * Deprecated 삭제 마이그레이션 필요함
+   */
   superClass: SuperClass;
+  /**
+   * 마이그레이션 필요함 nullable 아님
+   */
+  hyperClass: categoryList_CategoryList_items_hyperClass | null;
 }
 
 export interface categoryList_CategoryList {
@@ -86,8 +102,18 @@ export interface postList_PostList_items_author {
   name: string | null;
 }
 
+export interface postList_PostList_items_hyperClass {
+  __typename: "HyperClass";
+  _id: any;
+  type: string;
+  label: string;
+}
+
 export interface postList_PostList_items_category {
   __typename: "Category";
+  /**
+   * Deprecated 삭제 마이그레이션 필요함
+   */
   superClass: SuperClass;
   label: string;
   _id: any;
@@ -101,6 +127,7 @@ export interface postList_PostList_items {
   title: string;
   body: string;
   author: postList_PostList_items_author;
+  hyperClass: postList_PostList_items_hyperClass | null;
   category: postList_PostList_items_category | null;
 }
 
@@ -154,8 +181,18 @@ export interface Fpost_author {
   name: string | null;
 }
 
+export interface Fpost_hyperClass {
+  __typename: "HyperClass";
+  _id: any;
+  type: string;
+  label: string;
+}
+
 export interface Fpost_category {
   __typename: "Category";
+  /**
+   * Deprecated 삭제 마이그레이션 필요함
+   */
   superClass: SuperClass;
   label: string;
   _id: any;
@@ -169,6 +206,7 @@ export interface Fpost {
   title: string;
   body: string;
   author: Fpost_author;
+  hyperClass: Fpost_hyperClass | null;
   category: Fpost_category | null;
 }
 
@@ -181,13 +219,29 @@ export interface Fpost {
 // GraphQL fragment: Fcategory
 // ====================================================
 
+export interface Fcategory_hyperClass {
+  __typename: "HyperClass";
+  _id: any;
+  createdAt: any;
+  updatedAt: any;
+  label: string;
+  type: string;
+}
+
 export interface Fcategory {
   __typename: "Category";
   _id: any;
   createdAt: any;
   updatedAt: any;
   label: string;
+  /**
+   * Deprecated 삭제 마이그레이션 필요함
+   */
   superClass: SuperClass;
+  /**
+   * 마이그레이션 필요함 nullable 아님
+   */
+  hyperClass: Fcategory_hyperClass | null;
 }
 
 /* tslint:disable */

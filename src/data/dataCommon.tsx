@@ -27,7 +27,7 @@ export const dataEntry = [
 
 export const dataBookingList = [
   {
-    link: "booking",
+    link: "부킹",
     bgImg: "bookingsolution_bg.jpg",
     title: "잔다 부킹",
     desc: "잔다에서 제공하는<br /> 잔다 부킹 솔루션 가이드",
@@ -40,7 +40,7 @@ export const dataBookingList = [
 
   },
   {
-    link: "timespace",
+    link: "타임스페이스",
     bgImg: "timespace_bg.jpg",
     title: "타임스페이스",
     desc: "<span>잔다에서 제공하는 <br />홈페이지 템플릿 가이드<span>",

@@ -16,39 +16,56 @@ import GuideList from "../components/GuideList";
 
 export const GuideEntry = React.lazy(() => import("../components/MainEntry"));
 
+// interface IProps {
+//   bookingData: IPost[];
+//   superClass: SuperClass;
+// }
+
 interface IProps {
   bookingData: IPost[];
-  superClass: SuperClass;
+  superClass: string;
 }
 
 const HighRouter: React.FC<IProps> = ({ bookingData, superClass }) => {
-  const { items: cateories } = useCategoryList({});
+  const { items: categories } = useCategoryList({});
+
   let text_manual = "";
   switch (superClass) {
-    case SuperClass.BOOKING:
+    case "부킹":
       text_manual = "부킹 시스템 가이드 ";
       break;
-    case SuperClass.TEMPLATEA:
-      text_manual = "템플릿 가이드";
+    case "템플릿A":
+      text_manual = "템플릿 A 가이드";
       break;
-    case SuperClass.TIMESPACE:
+    case "타임스페이스":
       text_manual = "타임스페이스 가이드";
       break;
   }
-  const naviData: TNaviData[] = cateories.filter(cat => cat.superClass === superClass).map((ct) => {
-    const { superClassRoute } = getFullNameOfSuperClass(ct.superClass);
 
+  const naviData: TNaviData[] = categories.filter(function (cat) {
+    if (cat.hyperClass)
+      return cat.hyperClass.label === superClass
+  }).map((ct) => {
+    const { superClassRoute } = getFullNameOfSuperClass(ct.hyperClass!.label);
     return {
       href: `/${superClassRoute}/${ct._id}`,
       name: ct.label,
     };
   });
 
+  // const naviData: TNaviData[] = categories.filter(cat => cat.superClass === superClass).map((ct) => {
+  //   const { superClassRoute } = getFullNameOfSuperClass(ct.superClass);
+
+  //   return {
+  //     href: `/${superClassRoute}/${ct._id}`,
+  //     name: ct.label,
+  //   };
+  // });
+
   return (
     <div className="bookingIndex">
       <Navigation naviData={naviData} />
       <Switch>
-
         <Route
           exact
           path={`/${superClass}`}
@@ -59,7 +76,14 @@ const HighRouter: React.FC<IProps> = ({ bookingData, superClass }) => {
           )}
         />
 
-        {cateories.map((ct) => (
+        {/*
+
+          
+        
+
+        */}
+
+        {categories.map((ct) => (
           <Route
             key={ct._id}
             path={`/${superClass}/${ct._id}`}

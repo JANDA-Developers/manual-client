@@ -150,7 +150,20 @@ Common Elements Style Begin
     color: white;
     margin: 0 auto;
     padding: 0;
+    width:100%;
+    height:80%;
+    overflow-y:scroll;
     text-align: center;
+    &::-webkit-scrollbar {
+      width: 1em;
+    }
+    &::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: darkgrey;
+      outline: 1px solid slategrey;
+    }
     &__item {
       position: relative;
       display: inline-block;
@@ -281,6 +294,8 @@ Common Elements Style Begin
   }
 }
 
+
+
 @media screen and (min-width: 600px) {
   .mb_display {
     display: inline-block;
@@ -307,14 +322,12 @@ Common Elements Style Begin
       top: 1.25rem;
       left: 1.25rem;
       font-size: 1.25rem;
-      font-family: $font_common1;
       font-weight: bold;
       cursor: pointer;
       border: none;
       background: transparent;
       opacity: 0;
       z-index: 0;
-      color: $theme_color_1;
     }
     &__outer {
       display: flex;
@@ -322,8 +335,6 @@ Common Elements Style Begin
       position: relative;
       width: 100vw;
       height: 100vh;
-      background: $theme_bgcolor_1;
-      transition: transform 500ms;
     }
     &__home {
       position: absolute;
@@ -333,7 +344,6 @@ Common Elements Style Begin
       cursor: pointer;
       border: none;
       font-size: 1.25rem;
-      font-family: $font_common2;
       background: transparent;
     }
 
@@ -345,7 +355,6 @@ Common Elements Style Begin
       cursor: pointer;
       border: none;
       font-size: 1.25rem;
-      font-family: $font_common1;
       background: transparent;
     }
 
@@ -360,7 +369,6 @@ Common Elements Style Begin
         margin: 0.9375rem 0;
         padding: 0;
         font-size: 1.5625rem;
-        font-family: $font_common1;
         cursor: pointer;
         &:hover:before {
           width: 100%;
@@ -372,7 +380,6 @@ Common Elements Style Begin
           bottom: -4px;
           width: 0%;
           height: 2px;
-          background: white;
           transition: width 300ms;
         }
       }
@@ -391,8 +398,6 @@ Common Elements Style Begin
       padding: 3.125rem 0;
       text-align: center;
       font-size: 2.5rem;
-      font-family: $font_common1;
-      background: $theme_bgcolor_1;
       color: white;
     }
     &__con {
@@ -401,7 +406,6 @@ Common Elements Style Begin
         &__title {
           margin: 0 0 1.875rem 0;
           font-size: 2.125rem;
-          font-family: $font_common1;
         }
         &__img {
           display: block;
@@ -414,7 +418,6 @@ Common Elements Style Begin
         &__detail {
           margin: 0 0 1.875rem 0;
           font-size: 1.25rem;
-          font-family: $font_common1;
           span {
             line-height: 1.75rem;
           }
@@ -431,9 +434,6 @@ Common Elements Style Begin
           padding: 0.9375rem 1.875rem 0.625rem 1.875rem;
           width: 100%;
           font-size: 1.5625rem;
-          font-family: $font_common1;
-          background: $theme_color_1;
-          color: white;
         }
         &__img {
           display: block;
@@ -446,7 +446,6 @@ Common Elements Style Begin
         &__detail {
           margin: 0 0 1.875rem 0;
           font-size: 1.25rem;
-          font-family: $font_common1;
           span {
             line-height: 1.75rem;
           }
@@ -457,6 +456,7 @@ Common Elements Style Begin
 }
 
 @media screen and (min-width: 1024px) {
+  
   .guideNavi {
     position: fixed;
     z-index: 50;
@@ -500,7 +500,6 @@ Common Elements Style Begin
       position: absolute;
       top: 1.875rem;
       left: 1.875rem;
-      color: white;
       cursor: pointer;
       border: none;
       font-size: 1vw;
@@ -511,7 +510,6 @@ Common Elements Style Begin
       position: absolute;
       top: 1.875rem;
       right: 1.875rem;
-      color: white;
       cursor: pointer;
       border: none;
       font-size: 1vw;
@@ -519,9 +517,11 @@ Common Elements Style Begin
     }
 
     &__list {
-      color: white;
-      margin: 0;
+      margin: 30px 0 0 0;
       padding-left: 3.125rem;
+      width:100%; 
+      height:80%;
+      overflow-y:scroll;
       text-align: left;
       &__item {
         position: relative;
@@ -540,7 +540,6 @@ Common Elements Style Begin
           bottom: -4px;
           width: 0%;
           height: 2px;
-          background: white;
           transition: width 300ms;
         }
       }
@@ -559,7 +558,6 @@ Common Elements Style Begin
       padding: 3.125rem 0;
       text-align: center;
       font-size: 2.5rem;
-      color: white;
     }
     &__body {
       margin: 0 auto;
@@ -609,9 +607,6 @@ Common Elements Style Begin
           padding: 0.9375rem 1.875rem 0.625rem 1.875rem;
           width: 100%;
           font-size: 1.875rem;
-          font-family: $font_common1;
-          background: $theme_color_1;
-          color: white;
         }
         &__img {
           display: block;
@@ -624,7 +619,6 @@ Common Elements Style Begin
         &__detail {
           margin: 0 0 1.875rem 0;
           font-size: 1.375rem;
-          font-family: $font_common1;
           span {
             line-height: 1.75rem;
           }
