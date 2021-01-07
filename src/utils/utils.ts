@@ -12,6 +12,7 @@ export const filterDataBySuperClass = (
 export const getFullNameOfSuperClass = (ct: string) => {
   let superClassRoute = "";
   let text_manual = "";
+
   // if (ct === SuperClass.BOOKING) {
   //   superClassRoute = "booking";
   //   text_manual = "부킹시스템 메뉴얼";

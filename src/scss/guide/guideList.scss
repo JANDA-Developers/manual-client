@@ -9,7 +9,7 @@ $theme_color_1: #152743;
 
 .guideList {
     position:relative;
-    font-family: "GmarketSansMedium";
+    font-family: "NEXON Lv1 Gothic";
 
     &__side {
         position:fixed; z-index:10;
@@ -18,7 +18,7 @@ $theme_color_1: #152743;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding:0 20px;
+        padding:0 50px;
         width:40%; 
         height:100vh;
         text-align:center;
@@ -33,20 +33,21 @@ $theme_color_1: #152743;
 
     &__sideLogo {
         margin-bottom:3.125rem;
-        width:50%;
+        height:6.25rem;
     }
 
     &__sideTitle {
         margin-bottom:1.875rem;
         font-size:4.375rem;
-        
+        font-weight:700;
     }
 
     &__sideIntro {
-        font-size:1.875rem;
+        font-size:1.4375rem;
         line-height:1.5em;
         &:nth-child(2) {
             font-size:2.5rem;
+            font-weight:700;
         }
     }
 
@@ -141,6 +142,7 @@ $theme_color_1: #152743;
         position:relative;
         margin-bottom:0.9375rem;
         font-size:2.1875rem;
+        font-weight:700;
         transition:color 300ms;
         &:before {
             content:"";

@@ -17,7 +17,7 @@ const HomeBlock: React.FC<IblockData> = ({ blockData }) => {
 
     return (
         <div className="homeBlock">
-            <Link to="/guideBooking" className="homeBlock__link">
+            <Link to={blockData.link} className="homeBlock__link">
                 <h2 className="homeBlock__title">
                     {blockData.title}
                 </h2>

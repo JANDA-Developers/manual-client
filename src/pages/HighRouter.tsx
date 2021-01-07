@@ -6,10 +6,7 @@ import GuidBody from "./GuidBody";
 import { JDpreloader } from "@janda-com/front";
 import { sharedEntryData } from "../type/const";
 import { ICategory, IPost } from "../type/interface";
-import {
-  getPostsByCatId,
-  getFullNameOfSuperClass,
-} from "../utils/utils";
+import { getPostsByCatId, getFullNameOfSuperClass } from "../utils/utils";
 import { useCategoryList } from "../hook/useCatList";
 import { SuperClass } from "../apollo/api";
 import GuideList from "../components/GuideList";
@@ -28,7 +25,6 @@ interface IProps {
 
 const HighRouter: React.FC<IProps> = ({ bookingData, superClass }) => {
   const { items: categories } = useCategoryList({});
-
   let text_manual = "";
   switch (superClass) {
     case "부킹":
@@ -41,6 +37,9 @@ const HighRouter: React.FC<IProps> = ({ bookingData, superClass }) => {
       text_manual = "타임스페이스 가이드";
       break;
   }
+
+  console.log('categories : ');
+  console.log(categories);
 
   const naviData: TNaviData[] = categories.filter(function (cat) {
     if (cat.hyperClass)
@@ -75,13 +74,6 @@ const HighRouter: React.FC<IProps> = ({ bookingData, superClass }) => {
             </Suspense>
           )}
         />
-
-        {/*
-
-          
-        
-
-        */}
 
         {categories.map((ct) => (
           <Route

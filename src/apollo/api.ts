@@ -286,9 +286,9 @@ export interface FoffsetPagingInfo {
  * 슈퍼 분류!
  */
 export enum SuperClass {
-  BOOKING = "BOOKING",
+  BOOKING = "부킹",
   TEMPLATEA = "TEMPLATEA",
-  TIMESPACE = "TIMESPACE",
+  TIMESPACE = "타임스페이스",
 }
 
 /**

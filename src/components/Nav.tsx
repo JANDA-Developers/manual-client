@@ -29,25 +29,21 @@ const Navigation: React.FC<INavi> = ({ naviData }) => {
         메뉴 보기
       </button>
       <div className="guideNavi__outer">
+        <Link to="/">
+          <button className="guideNavi__home">Home</button>
+        </Link>
         <button
-          onClick={() => {
-            setOpen(false);
-          }}
+          onClick={() => { setOpen(false); }}
           className="guideNavi__close"
         >
           닫기
         </button>
-        <Link to="/">
-          <button className="guideNavi__home">Home</button>
-        </Link>
         <ul className="guideNavi__list">
           {naviData.map((nav_list, index) => (
             <li key={index}>
               <Link
                 to={nav_list.href}
-                onClick={() => {
-                  navClicked();
-                }}
+                onClick={() => { navClicked(); }}
               >
                 <span className="guideNavi__list__item">{nav_list.name}</span>
               </Link>

@@ -10,6 +10,7 @@
     "html-to-react": "^1.4.3",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
+    "react-app-polyfill": "^2.0.0",
     "react-day-picker": "^7.4.8",
     "react-dom": "^16.13.1",
     "react-on-images-loaded": "^2.2.5",
@@ -26,7 +27,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "upload": "./upload.sh",
     "precodegen": "apollo schema:download --endpoint=http://manual-api-server.stayjanda.cloud:4000/graphql",
     "codegen": "apollo codegen:generate src/apollo/api.ts --queries=src/apollo/query.tsx --addTypename --localSchemaFile=schema.json --target=typescript --outputFlat"
   },
@@ -40,6 +40,8 @@
       "not op_mini all"
     ],
     "development": [
+      ">0.2%",
+      "ie 11",
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"

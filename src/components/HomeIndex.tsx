@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import "../scss/guide/guideHome.scss";
 import { EntryContext } from "../context/entryContext";
-import { dataEntry } from "../data/dataCommon"
+import { dataEntry } from "../data/dataCommon";
 import HomeBlock from "./HomeBlock";
 
 const HomeIndex: React.FC = () => {

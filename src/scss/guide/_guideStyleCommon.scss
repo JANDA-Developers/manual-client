@@ -1,5 +1,13 @@
-$font_common1: "GmarketSansMedium";
-$font_common2: "Righteous";
+$font_common1: "NEXON Lv1 Gothic";
+$font_common2: "NEXON Lv1 Gothic";
+
+@font-face { 
+  font-family: 'NEXON Lv1 Gothic'; 
+  font-weight: normal; 
+  font-style: normal; 
+  src: url('/font/nexon_gothic/NEXONLv1GothicRegular.woff') format('woff'),
+        url('/font/nexon_gothic/NEXONLv1GothicRegular.ttf') format('truetype');
+}
 
 /* ::::::::::::::::::::::::
 
@@ -88,6 +96,7 @@ Common Elements Style Begin
   z-index: 50;
   top: 0;
   left: 0;
+  font-weight:700;
   transition: transform 500ms;
   &.off {
     transition: transition-duration 0ms;
@@ -151,7 +160,7 @@ Common Elements Style Begin
     margin: 0 auto;
     padding: 0;
     width:100%;
-    height:80%;
+    max-height:80%;
     overflow-y:scroll;
     text-align: center;
     &::-webkit-scrollbar {
@@ -174,6 +183,7 @@ Common Elements Style Begin
       cursor: pointer;
       &:hover:before {
         width: 100%;
+        left:0;
       }
       &:before {
         content: "";
@@ -224,7 +234,6 @@ Common Elements Style Begin
         margin-top: 1.875rem;
       }
     }
-
     &-video {
       iframe {
         width: 80%;
@@ -296,161 +305,50 @@ Common Elements Style Begin
 
 
 
+
+
+
 @media screen and (min-width: 600px) {
-  .mb_display {
-    display: inline-block;
-  }
+
 
   .guideNavi {
-    position: fixed;
-    z-index: 50;
-    top: 0;
-    left: 0;
-    transition: transform 500ms;
-    &.off {
-      transition: transition-duration 0ms;
-      transform: translateX(-100%);
-
-      .guideNavi__open {
-        opacity: 1;
-        z-index: 50;
-      }
-    }
-    &__open {
-      position: fixed;
-      z-index: 50;
-      top: 1.25rem;
-      left: 1.25rem;
-      font-size: 1.25rem;
-      font-weight: bold;
-      cursor: pointer;
-      border: none;
-      background: transparent;
-      opacity: 0;
-      z-index: 0;
-    }
-    &__outer {
-      display: flex;
-      align-items: center;
-      position: relative;
-      width: 100vw;
-      height: 100vh;
-    }
-    &__home {
-      position: absolute;
-      top: 1.875rem;
-      left: 1.875rem;
-      color: white;
-      cursor: pointer;
-      border: none;
-      font-size: 1.25rem;
-      background: transparent;
-    }
-
-    &__close {
-      position: absolute;
-      top: 1.875rem;
-      right: 1.875rem;
-      color: white;
-      cursor: pointer;
-      border: none;
-      font-size: 1.25rem;
-      background: transparent;
-    }
-
     &__list {
-      color: white;
-      margin: 0 auto;
-      padding: 0;
-      text-align: center;
+
       &__item {
-        position: relative;
-        display: inline-block;
-        margin: 0.9375rem 0;
-        padding: 0;
         font-size: 1.5625rem;
-        cursor: pointer;
-        &:hover:before {
-          width: 100%;
-        }
-        &:before {
-          content: "";
-          position: absolute;
-          left: 0;
-          bottom: -4px;
-          width: 0%;
-          height: 2px;
-          transition: width 300ms;
-        }
+
       }
     }
   }
 
   .guideInfo {
-    position: relative;
-    overflow: hidden;
-    &__outer {
-      position: relative;
-      margin-left: 0%;
-    }
+
     &__title {
       margin: 0 0 6.25rem 0;
-      padding: 3.125rem 0;
-      text-align: center;
-      font-size: 2.5rem;
-      color: white;
     }
-    &__con {
-      &__list {
-        text-align: center;
-        &__title {
-          margin: 0 0 1.875rem 0;
-          font-size: 2.125rem;
-        }
-        &__img {
-          display: block;
-          margin: 0 auto 3.125rem auto;
-          width: 70%;
-          &:last-child {
-            margin: 0 auto 6.25rem auto;
-          }
-        }
-        &__detail {
-          margin: 0 0 1.875rem 0;
-          font-size: 1.25rem;
-          span {
-            line-height: 1.75rem;
-          }
-        }
-      }
 
-      &__listqna {
-        text-align: center;
-        margin: 0 auto;
-        width: 100%;
-        &__title {
-          display: inline-block;
-          margin: 0 0 1.875rem 0;
-          padding: 0.9375rem 1.875rem 0.625rem 1.875rem;
-          width: 100%;
-          font-size: 1.5625rem;
-        }
-        &__img {
-          display: block;
-          margin: 0 auto 3.125rem auto;
-          width: 70%;
-          &:last-child {
-            margin: 0 auto 6.25rem auto;
-          }
-        }
+    &__con {
         &__detail {
-          margin: 0 0 1.875rem 0;
           font-size: 1.25rem;
-          span {
-            line-height: 1.75rem;
+
+        }
+
+        &__listqna {
+          &__title {
+            font-size: 1.5625rem;
+          }
+          &__img {
+            display: block;
+            margin: 0 auto 3.125rem auto;
+          }
+          &__detail {
+            font-size: 1.25rem;
+            span {
+              line-height: 1.75rem;
+            }
           }
         }
-      }
+        
     }
   }
 }
@@ -458,62 +356,36 @@ Common Elements Style Begin
 @media screen and (min-width: 1024px) {
   
   .guideNavi {
-    position: fixed;
-    z-index: 50;
-    top: 0;
-    left: 0;
-    transition: transform 500ms;
-    &.off {
-      transition: transition-duration 0ms;
-      transform: translateX(-100%);
 
-      .guideNavi__open {
-        opacity: 1;
-        z-index: 50;
-      }
-    }
+
     &__open {
       position: fixed;
       z-index: 50;
       top: 3.125rem;
       left: 3.125rem;
       font-size: 1.3vw;
-      font-weight: bold;
-      cursor: pointer;
       border: none;
-      background: transparent;
-      opacity: 0;
-      z-index: 0;
       transform: translateX(20vw);
     }
+
     &__outer {
       display: flex;
       align-items: center;
       position: relative;
       width: 20vw;
       height: 100vh;
-
-      transition: transform 500ms;
     }
 
     &__home {
-      position: absolute;
       top: 1.875rem;
       left: 1.875rem;
-      cursor: pointer;
-      border: none;
       font-size: 1vw;
-      background: transparent;
     }
 
     &__close {
-      position: absolute;
       top: 1.875rem;
       right: 1.875rem;
-      cursor: pointer;
-      border: none;
       font-size: 1vw;
-      background: transparent;
     }
 
     &__list {
@@ -521,34 +393,27 @@ Common Elements Style Begin
       padding-left: 3.125rem;
       width:100%; 
       height:80%;
-      overflow-y:scroll;
       text-align: left;
       &__item {
-        position: relative;
         display: inline-block;
         margin: 0.9375rem 0;
         padding: 0;
         font-size: 1.25rem;
-        cursor: pointer;
         &:hover:before {
           width: 100%;
         }
         &:before {
           content: "";
           position: absolute;
-          left: 0;
           bottom: -4px;
-          width: 0%;
           height: 2px;
-          transition: width 300ms;
         }
       }
     }
   }
 
   .guideInfo {
-    position: relative;
-    overflow: hidden;
+
     &__outer {
       position: relative;
       margin-left: 0%;
@@ -556,14 +421,12 @@ Common Elements Style Begin
     &__title {
       margin: 0 0 3.125rem 0;
       padding: 3.125rem 0;
-      text-align: center;
       font-size: 2.5rem;
     }
     &__body {
       margin: 0 auto;
       padding: 0 0.625rem 3.125rem 0.625rem;
       width: 80%;
-      text-align: center;
       p {
         font-size: 1.25rem;
       }
@@ -590,26 +453,19 @@ Common Elements Style Begin
         &__detail {
           margin: 0 0 1.875rem 0;
           font-size: 1.25rem;
-          span {
-            line-height: 1.75rem;
-          }
         }
       }
 
       &__listqna {
-        text-align: center;
-        margin: 0 auto;
         width: 56.25rem;
         max-width: 100%;
         &__title {
-          display: inline-block;
           margin: 0 0 1.875rem 0;
           padding: 0.9375rem 1.875rem 0.625rem 1.875rem;
           width: 100%;
           font-size: 1.875rem;
         }
         &__img {
-          display: block;
           margin: 0 auto 3.125rem auto;
           width: 70%;
           &:last-child {
@@ -619,11 +475,16 @@ Common Elements Style Begin
         &__detail {
           margin: 0 0 1.875rem 0;
           font-size: 1.375rem;
-          span {
-            line-height: 1.75rem;
-          }
         }
       }
     }
   }
+}
+
+
+@media screen and (min-width: 1680px) {
+
+
+
+
 }

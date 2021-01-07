@@ -1,0 +1,7 @@
+@font-face {
+    font-family: 'NEXON Lv1 Gothic';
+    src: url('./NEXONLv1GothicRegular.woff') format('woff'),
+         url('./NEXONLv1GothicRegular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}

@@ -37,6 +37,9 @@ function App() {
 
   const Data: IPost[] = data.PostList.items;
 
+  console.log('Data Sets :');
+  console.log(data);
+
   return (
     <EntryContextProvider>
       <div className="App">
@@ -52,7 +55,12 @@ function App() {
             <Route
               exact
               path='/guideBooking'
-              component={GuideList}
+              render={() => (<GuideList sort={'booking'} />)}
+            />
+            <Route
+              exact
+              path='/guideTemplate'
+              render={() => (<GuideList sort={'template'} />)}
             />
             <Route
               path="/부킹"

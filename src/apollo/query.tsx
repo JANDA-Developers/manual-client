@@ -14,7 +14,7 @@ fragment Fuser on User {
 
 
 const F_POST = gql`
-  fragment Fpost on Post {
+fragment Fpost on Post {
     _id
     createdAt
     updatedAt
@@ -64,7 +64,7 @@ fragment FoffsetPagingInfo on OffsetPagingInfo {
 
 
 export const CATEGORY_LIST = gql`
-  query categoryList(
+query categoryList(
     $sort: [_CategorySort!],
     $filter: _CategoryFilter,
     $pagingInput: OffsetPagingInput!

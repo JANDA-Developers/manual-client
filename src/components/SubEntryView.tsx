@@ -33,15 +33,9 @@ const SubEntryView: React.FC<IEntry> = ({ title, logo, text_menual }) => {
             <div className="guideEntry__arrow__inner_arrow"></div>
           </div>
         </div>
-        <div
-          className={`guideEntry__deco1 entryDeco ${!isLoad || "load"}`}
-        ></div>
-        <div
-          className={`guideEntry__deco2 entryDeco ${!isLoad || "load"}`}
-        ></div>
-        <div
-          className={`guideEntry__deco3 entryDeco ${!isLoad || "load"}`}
-        ></div>
+        <div className={`guideEntry__deco1 entryDeco ${!isLoad || "load"}`}></div>
+        <div className={`guideEntry__deco2 entryDeco ${!isLoad || "load"}`}></div>
+        <div className={`guideEntry__deco3 entryDeco ${!isLoad || "load"}`}></div>
       </div>
     </div>
   );
