@@ -13,7 +13,6 @@ import { EntryContext } from "./context/entryContext";
 import { POST_LIST } from "./apollo/query";
 import { postList, postListVariables, SuperClass } from "./apollo/api";
 import GuideList from "./components/GuideList";
-import Test from "./components/Test";
 
 const { version } = require("../package.json");
 const lastVersion = localStorage.getItem("version");
@@ -46,71 +45,85 @@ function App() {
         <BrowserRouter>
           {pathChk && <MainSearcher posts={Data} />}
           <Switch>
-            <Route path="/" exact render={() => <HomeIndex />}></Route>
-            {/* <Route
+            <Route
+              path="/"
               exact
-              path='/타임스페이스 A'
-              component={Test}
-            /> */}
+              render={() => <HomeIndex />}
+            />
+
             <Route
               exact
               path='/guideBooking'
               render={() => (<GuideList sort={'booking'} />)}
             />
+
             <Route
               exact
               path='/guideTemplate'
               render={() => (<GuideList sort={'template'} />)}
             />
+
             <Route
               path="/부킹"
               render={() => (
                 <HighRouter
                   // superClass={SuperClass.BOOKING}
-                  superClass={'부킹'}
-                  bookingData={filterDataBySuperClass(
-                    Data,
-                    SuperClass.BOOKING
-                  )}
+                  superClass={"부킹"}
+                  bookingData={filterDataBySuperClass(Data, "부킹")}
                 />
               )}
-            ></Route>
-            <Route
-              path="/템플릿A"
-              render={() => (
-                <HighRouter
-                  superClass={'템플릿A'}
-                  bookingData={filterDataBySuperClass(
-                    Data,
-                    SuperClass.TEMPLATEA
-                  )}
-                />
-              )}
-            ></Route>
+            />
+
             <Route
               path="/타임스페이스"
               render={() => (
                 <HighRouter
-                  superClass={'타임스페이스'}
-                  bookingData={filterDataBySuperClass(
-                    Data,
-                    SuperClass.TIMESPACE
-                  )}
+                  superClass={"타임스페이스"}
+                  bookingData={filterDataBySuperClass(Data, "타임스페이스")}
                 />
               )}
-            ></Route>
+            />
+
             <Route
               path="/템플릿 호텔"
               render={() => (
                 <HighRouter
-                  superClass={'템플릿 호텔'}
-                  bookingData={filterDataBySuperClass(
-                    Data,
-                    SuperClass.HOTEL_HOTEL
-                  )}
+                  superClass={"템플릿 호텔"}
+                  bookingData={filterDataBySuperClass(Data, "템플릿 호텔")}
                 />
               )}
-            ></Route>
+            />
+
+            <Route
+              path="/템플릿 카페"
+              render={() => (
+                <HighRouter
+                  superClass={"템플릿 카페"}
+                  bookingData={filterDataBySuperClass(Data, "템플릿 카페")}
+                />
+              )}
+            />
+
+            <Route
+              path="/템플릿 펍"
+              render={() => (
+                <HighRouter
+                  superClass={"템플릿 펍"}
+                  bookingData={filterDataBySuperClass(Data, "템플릿 펍")}
+                />
+              )}
+            />
+
+            <Route
+              path="/템플릿A"
+              render={() => (
+                <HighRouter
+                  superClass={"템플릿A"}
+                  bookingData={filterDataBySuperClass(Data, "템플릿A")}
+                />
+              )}
+            />
+
           </Switch>
         </BrowserRouter>
         <div className="guideVersion">{version}</div>

@@ -20,7 +20,7 @@ export const GuideEntry = React.lazy(() => import("../components/MainEntry"));
 
 interface IProps {
   bookingData: IPost[];
-  superClass: string;
+  superClass: SuperClass | string;
 }
 
 const HighRouter: React.FC<IProps> = ({ bookingData, superClass }) => {
@@ -32,15 +32,27 @@ const HighRouter: React.FC<IProps> = ({ bookingData, superClass }) => {
     case "부킹":
       text_manual = "부킹 시스템 가이드 ";
       break;
-    case "템플릿A":
-      text_manual = "템플릿 A 가이드";
-      break;
+
     case "타임스페이스":
       text_manual = "타임스페이스 가이드";
       break;
+
     case "템플릿 호텔":
       text_manual = "호텔 템플릿 가이드";
       break;
+
+    case "템플릿 카페":
+      text_manual = "카페 템플릿 가이드";
+      break;
+
+    case "템플릿 펍":
+      text_manual = "펍 템플릿 가이드";
+      break;
+
+    case "템플릿A":
+      text_manual = "템플릿 A 가이드";
+      break;
+
   }
 
   console.log('categories : ');
@@ -50,7 +62,6 @@ const HighRouter: React.FC<IProps> = ({ bookingData, superClass }) => {
     if (cat.hyperClass)
       return cat.hyperClass.label === superClass
   }).map((ct) => {
-    const { superClassRoute } = getFullNameOfSuperClass(ct.hyperClass!.label);
     return {
       href: `/${superClass}/${ct._id}`,
       name: ct.label,

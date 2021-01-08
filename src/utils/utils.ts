@@ -6,7 +6,7 @@ export const getPostsByCatId = (datas: IPost[], id: string): IPost[] =>
 
 export const filterDataBySuperClass = (
   datas: IPost[],
-  superClass: SuperClass
+  superClass: string
 ) => datas.filter((d) => d.hyperClass?.label === superClass);
 
 export const getFullNameOfSuperClass = (ct: string) => {

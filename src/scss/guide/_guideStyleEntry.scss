@@ -70,21 +70,22 @@
         position: absolute;
         top: 0;
         left: 50%;
-        margin-left: -0.5%;
+        margin-left: -0.4%;
         width: 2px;
-        height: 112px;
+        height: 110px;
         background: $theme_bgcolor_1;
         animation: bookEntryArrow 2s cubic-bezier(1, 0, 0, 1) infinite;
       }
-      &_arrow {
-        margin: 0 auto;
-        width: 8px;
-        height: 8px;
-        border-top: 2px solid $theme_bgcolor_1;
-        border-right: 2px solid $theme_bgcolor_1;
-        transform: rotate(135deg);
-        box-sizing: content-box;
-      }
+    }
+
+    &__innerArrow {
+      margin: 0 auto;
+      width: 8px;
+      height: 8px;
+      border-top: 2px solid $theme_bgcolor_1;
+      border-right: 2px solid $theme_bgcolor_1;
+      transform: rotate(135deg);
+      box-sizing: content-box;
     }
   }
 
@@ -241,6 +242,7 @@
       left: 50%;
       transform: translateX(-50%);
       width: 250px;
+      
       &__inner {
         position: relative;
         padding-top: 100px;
@@ -249,18 +251,18 @@
           position: absolute;
           top: 0;
           left: 50%;
-          margin-left: -0.3%;
           width: 2px;
-          height: 112px;
-        }
-        &_arrow {
-          margin: 0 auto;
-          width: 8px;
-          height: 8px;
-          transform: rotate(135deg);
-          box-sizing: content-box;
         }
       }
+
+      &__innerArrow {
+        margin: 0 auto;
+        width: 8px;
+        height: 8px;
+        transform: rotate(135deg);
+        box-sizing: content-box;
+      }
+
     }
 
     &__deco1 {

@@ -50,17 +50,17 @@ export const dataBookingList = [
           </svg>`,
 
   },
-  {
-    link: "부킹라이트",
-    bgImg: "bookinglight_bg.jpg",
-    title: "부킹 라이트",
-    desc: "<span>잔다에서 제공하는 <br />홈페이지 템플릿 가이드<span>",
-    icon: `<svg viewBox="0 0 50 50" class="guideList__blockIcon">
-           <path d="M1,39h18.523l-3.2,8H12v2h3.523h18.954H38v-2h-4.323l-3.2-8H49V1H1V39z M31.523,47H18.477l3.2-8h6.646L31.523,47zM29.677,37h-9.354H3v-8h44v8H29.677z M47,3v24H3V3H47z" />
-           <rect x="24" y="32" width="2" height="2" />
-          </svg>`,
+  // {
+  //   link: "부킹라이트",
+  //   bgImg: "bookinglight_bg.jpg",
+  //   title: "부킹 라이트",
+  //   desc: "<span>잔다에서 제공하는 <br />홈페이지 템플릿 가이드<span>",
+  //   icon: `<svg viewBox="0 0 50 50" class="guideList__blockIcon">
+  //          <path d="M1,39h18.523l-3.2,8H12v2h3.523h18.954H38v-2h-4.323l-3.2-8H49V1H1V39z M31.523,47H18.477l3.2-8h6.646L31.523,47zM29.677,37h-9.354H3v-8h44v8H29.677z M47,3v24H3V3H47z" />
+  //          <rect x="24" y="32" width="2" height="2" />
+  //         </svg>`,
 
-  },
+  // },
 ];
 
 

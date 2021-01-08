@@ -21,8 +21,9 @@ body {
   height: auto !important;
 }
 
-ul {
-  padding: 0;
+ul, ol {
+  list-style: none;
+  padding:0;
 }
 
 .bookingIndex {
@@ -98,14 +99,13 @@ Common Elements
 .navOpen {
   display:block;
     position: fixed;  z-index: 50;
-    top:0; left:0;
+    top:20px; left:10px;
     font-size: 1.25rem;
     font-family: $font_common1;
     font-weight: bold;
     cursor: pointer;
     border: none;
     background: transparent;
-    z-index: 0;
     color: $theme_color_1;
     &.off {
       display:none;
@@ -209,6 +209,9 @@ Common Elements
 .guideInfo {
   position: relative;
   overflow: hidden;
+  &:nth-last-child(1) {
+    padding-bottom:50px;
+  }
   &__outer {
     position: relative;
     margin-left: 0%;
@@ -224,13 +227,17 @@ Common Elements
   }
   &__body {
     margin: 0 auto;
-    padding: 0 0.625rem 1.875rem 0.625rem;
+    padding: 0 0.9375rem 1.875rem 0.9375rem;
     width: 100%;
     text-align: center;
 
     p {
       font-size: 1.25rem;
       font-family: $font_common1;
+    }
+
+    li {
+      margin:10px 0;
     }
 
     img {
@@ -419,7 +426,9 @@ Common Elements
   }
 
   .guideInfo {
-
+    &:nth-last-child(1) {
+      padding-bottom:100px;
+    }
     &__outer {
       position: relative;
       margin-left: 0%;
@@ -435,6 +444,9 @@ Common Elements
       width: 80%;
       p {
         font-size: 1.25rem;
+      }
+      li {
+        margin:10px 0;
       }
       img {
         max-width: 80%;

@@ -30,7 +30,7 @@ const SubEntryView: React.FC<IEntry> = ({ title, logo, text_menual }) => {
         </div>
         <div className="guideEntry__arrow">
           <div className="guideEntry__arrow__inner">
-            <div className="guideEntry__arrow__inner_arrow"></div>
+            <div className="guideEntry__arrow__innerArrow"></div>
           </div>
         </div>
         <div className={`guideEntry__deco1 entryDeco ${!isLoad || "load"}`}></div>

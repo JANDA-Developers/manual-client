@@ -19,7 +19,10 @@ const HomeIndex: React.FC = () => {
       <div className={`home__bgWrap ${loading && 'off'}`}>
         <div className="home__bgText">
           <h1 className="home__bgTitleWrap">
-            <span className="home__bgTitle">대한민국 1등 <br />클라우드·핀테크 기반 예약솔루션</span>
+            <span className="home__bgTitle">
+              대한민국 1등 <br />클라우드·핀테크 기반
+              <span className="mbBlock"> 예약솔루션</span>
+            </span>
             <span className="home__bgSubTitle">잔다</span>
           </h1>
         </div>

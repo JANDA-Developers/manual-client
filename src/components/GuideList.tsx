@@ -17,25 +17,53 @@ interface IProps {
     sort: string
 }
 
+
+const useScrollHook = () => {
+    const [scroll, setScroll] = useState({
+        winX: 0,
+        winY: 0
+    });
+    const onScroll = (event: any) => {
+        setScroll({
+            ...scroll,
+            winY: window.scrollY
+        })
+    }
+    useEffect(() => {
+        window.addEventListener('scroll', onScroll);
+        return () => window.removeEventListener('scroll', onScroll);
+    }, [])
+    return scroll;
+}
+
 const GuideList: React.FC<IProps> = ({ sort }) => {
 
     const [sideState, setSideState] = useState(false);
     const [scrollDown, setScrollDown] = useState(false);
     const [heightFull, setHeightFull] = useState(false);
+    let guideListData: TGuideList[] = [];
+
+    const arrowDisplay = () => {
+
+        if (scrollDown) {
+            return <div className="guideList__arrowWrap">
+                <div className="guideEntry__arrow">
+                    <div className="guideEntry__arrow__inner">
+                        <div className="guideEntry__arrow__innerArrow"></div>
+                    </div>
+                </div>
+            </div>
+        }
+
+    }
 
     const guideListDisplay = () => {
 
-        console.log(`Sort : ${sort}`);
-
-        let guideListData: TGuideList[] = [];
-
         if (sort == 'booking') {
             guideListData = dataBookingList;
-            console.log(' why booking')
         }
         if (sort == 'template') {
             guideListData = dataTemplateList;
-            console.log(' why template')
         }
 
         return guideListData.map((guideList) => {
@@ -57,7 +85,7 @@ const GuideList: React.FC<IProps> = ({ sort }) => {
 
     useEffect(() => {
 
-        if (dataBookingList.length > 2) {
+        if (guideListData.length > 2) {
             setScrollDown(true);
         } else {
             setHeightFull(true);
@@ -66,8 +94,14 @@ const GuideList: React.FC<IProps> = ({ sort }) => {
 
     }, []);
 
+    const { winY } = useScrollHook();
+
     return (
         <div className="guideList">
+            {
+                winY < 200 ? arrowDisplay() : null
+
+            }
             <section className={`guideList__side ${sideState && 'on'}`}>
                 <img src="/img/common/logo.png" alt="logo" className="guideList__sideLogo" />
                 <div className="guideList__sideText">
