@@ -31,6 +31,7 @@ const HomeBlock: React.FC<IblockData> = ({ blockData }) => {
             </Link>
         </div>
     )
+
 }
 
 export default HomeBlock

@@ -5,53 +5,46 @@ export type TNaviData = {
   href: string;
   name: string;
 };
-
 interface INavi {
   naviData: TNaviData[];
 }
 
 const Navigation: React.FC<INavi> = ({ naviData }) => {
+
   const [isOpen, setOpen] = useState(false);
 
-  function navClicked() {
+  const handleNavbar = (navState: boolean) => {
+    setOpen(navState);
+  }
+
+  const navClicked = () => {
     setOpen(false);
     window.scrollTo(0, 0);
   }
 
   return (
-    <div className={`guideNavi ${isOpen || "off"}`}>
-      <button
-        onClick={() => {
-          setOpen(true);
-        }}
-        className="guideNavi__open"
-      >
+    <>
+      <button onClick={() => { handleNavbar(true) }} className={`navOpen ${isOpen && "off"}`} >
         메뉴 보기
       </button>
-      <div className="guideNavi__outer">
-        <Link to="/">
-          <button className="guideNavi__home">Home</button>
-        </Link>
-        <button
-          onClick={() => { setOpen(false); }}
-          className="guideNavi__close"
-        >
-          닫기
-        </button>
-        <ul className="guideNavi__list">
-          {naviData.map((nav_list, index) => (
-            <li key={index}>
-              <Link
-                to={nav_list.href}
-                onClick={() => { navClicked(); }}
-              >
-                <span className="guideNavi__list__item">{nav_list.name}</span>
-              </Link>
-            </li>
-          ))}
-        </ul>
+      <div className={`guideNavi ${isOpen && "on"}`}>
+        <div className="guideNavi__outer">
+          <Link to="/">
+            <button className="guideNavi__home">Home</button>
+          </Link>
+          <button onClick={() => { handleNavbar(false) }} className="guideNavi__close"> 닫기 </button>
+          <ul className="guideNavi__list">
+            {naviData.map((nav_list, index) => (
+              <li key={index}>
+                <Link to={nav_list.href} onClick={() => { navClicked() }}>
+                  <span className="guideNavi__listItem">{nav_list.name}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

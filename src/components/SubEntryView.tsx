@@ -20,13 +20,13 @@ const SubEntryView: React.FC<IEntry> = ({ title, logo, text_menual }) => {
       <div className="guideEntry__outer">
         <div className="guideEntry__text">
           <h1
-            className="guideEntry__text_title"
+            className="guideEntry__textTitle"
             dangerouslySetInnerHTML={{
               __html: title,
             }}
           ></h1>
-          <strong className="guideEntry__text_logo">{logo}</strong>
-          <h2 className="guideEntry__text_menual">{text_menual}</h2>
+          <strong className="guideEntry__textLogo">{logo}</strong>
+          <h2 className="guideEntry__textMenual">{text_menual}</h2>
         </div>
         <div className="guideEntry__arrow">
           <div className="guideEntry__arrow__inner">

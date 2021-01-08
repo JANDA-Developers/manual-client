@@ -24,8 +24,10 @@ interface IProps {
 }
 
 const HighRouter: React.FC<IProps> = ({ bookingData, superClass }) => {
+
   const { items: categories } = useCategoryList({});
   let text_manual = "";
+
   switch (superClass) {
     case "부킹":
       text_manual = "부킹 시스템 가이드 ";
@@ -35,6 +37,9 @@ const HighRouter: React.FC<IProps> = ({ bookingData, superClass }) => {
       break;
     case "타임스페이스":
       text_manual = "타임스페이스 가이드";
+      break;
+    case "템플릿 호텔":
+      text_manual = "호텔 템플릿 가이드";
       break;
   }
 
@@ -47,7 +52,7 @@ const HighRouter: React.FC<IProps> = ({ bookingData, superClass }) => {
   }).map((ct) => {
     const { superClassRoute } = getFullNameOfSuperClass(ct.hyperClass!.label);
     return {
-      href: `/${superClassRoute}/${ct._id}`,
+      href: `/${superClass}/${ct._id}`,
       name: ct.label,
     };
   });
@@ -80,10 +85,7 @@ const HighRouter: React.FC<IProps> = ({ bookingData, superClass }) => {
             key={ct._id}
             path={`/${superClass}/${ct._id}`}
             component={() => (
-              <GuidBody
-                category={ct}
-                datas={getPostsByCatId(bookingData, ct._id)}
-              />
+              <GuidBody category={ct} datas={getPostsByCatId(bookingData, ct._id)} />
             )}
           />
         ))}

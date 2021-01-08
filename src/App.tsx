@@ -99,6 +99,18 @@ function App() {
                 />
               )}
             ></Route>
+            <Route
+              path="/템플릿 호텔"
+              render={() => (
+                <HighRouter
+                  superClass={'템플릿 호텔'}
+                  bookingData={filterDataBySuperClass(
+                    Data,
+                    SuperClass.HOTEL_HOTEL
+                  )}
+                />
+              )}
+            ></Route>
           </Switch>
         </BrowserRouter>
         <div className="guideVersion">{version}</div>
