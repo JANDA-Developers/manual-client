@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Helmet } from "react-helmet";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
 import "./normalize.css";
 import { useQuery } from "@apollo/client";
@@ -36,8 +37,8 @@ function App() {
 
   const Data: IPost[] = data.PostList.items;
 
-  console.log('Data Sets :');
-  console.log(data);
+  // console.log('Data Sets :');
+  // console.log(data);
 
   return (
     <EntryContextProvider>
@@ -85,11 +86,11 @@ function App() {
             />
 
             <Route
-              path="/템플릿 호텔"
+              path="/템플릿 숙박"
               render={() => (
                 <HighRouter
-                  superClass={"템플릿 호텔"}
-                  bookingData={filterDataBySuperClass(Data, "템플릿 호텔")}
+                  superClass={"템플릿 숙박"}
+                  bookingData={filterDataBySuperClass(Data, "템플릿 숙박")}
                 />
               )}
             />

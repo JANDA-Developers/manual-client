@@ -6,6 +6,8 @@
 }
 
 $theme_color_1: #152743;
+$sideWidth:35%;
+$listWidth:calc(100% - 35%);
 
 .guideList {
     position:relative;
@@ -169,7 +171,7 @@ $theme_color_1: #152743;
             justify-content: center;
             align-items: center;
             padding:0 50px;
-            width:40%; 
+            width:$sideWidth; 
             height:100vh;
             transform:translateX(-100%);
             &.on {
@@ -213,11 +215,12 @@ $theme_color_1: #152743;
         }
 
         .guideBlockWrap {
+            
             display:flex;
             flex-direction: row;
             flex-wrap: wrap;
-            margin-left:40%;
-            width:60%;
+            margin-left:$sideWidth;
+            width:$listWidth;
         }
 
         &__block {

@@ -37,8 +37,8 @@ const HighRouter: React.FC<IProps> = ({ bookingData, superClass }) => {
       text_manual = "타임스페이스 가이드";
       break;
 
-    case "템플릿 호텔":
-      text_manual = "호텔 템플릿 가이드";
+    case "템플릿 숙박":
+      text_manual = "숙박 템플릿 가이드";
       break;
 
     case "템플릿 카페":
@@ -55,8 +55,8 @@ const HighRouter: React.FC<IProps> = ({ bookingData, superClass }) => {
 
   }
 
-  console.log('categories : ');
-  console.log(categories);
+  // console.log('categories : ');
+  // console.log(categories);
 
   const naviData: TNaviData[] = categories.filter(function (cat) {
     if (cat.hyperClass)

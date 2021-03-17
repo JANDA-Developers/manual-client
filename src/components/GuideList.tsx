@@ -94,14 +94,15 @@ const GuideList: React.FC<IProps> = ({ sort }) => {
 
     }, []);
 
-    const { winY } = useScrollHook();
+    // const { winY } = useScrollHook();
 
     return (
         <div className="guideList">
-            {
+            {/* {
                 winY < 200 ? arrowDisplay() : null
 
-            }
+            } */}
+
             <section className={`guideList__side ${sideState && 'on'}`}>
                 <img src="/img/common/logo.png" alt="logo" className="guideList__sideLogo" />
                 <div className="guideList__sideText">
