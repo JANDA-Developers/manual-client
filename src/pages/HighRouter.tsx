@@ -29,12 +29,17 @@ const HighRouter: React.FC<IProps> = ({ bookingData, superClass }) => {
   let text_manual = "";
 
   switch (superClass) {
+
     case "부킹":
       text_manual = "부킹 시스템 가이드 ";
       break;
 
     case "타임스페이스":
       text_manual = "타임스페이스 가이드";
+      break;
+
+    case "정글웹":
+      text_manual = "정글웹 가이드 ";
       break;
 
     case "템플릿 숙박":

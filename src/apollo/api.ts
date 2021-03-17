@@ -289,6 +289,7 @@ export enum SuperClass {
   BOOKING = "부킹",
   TEMPLATEA = "TEMPLATEA",
   TIMESPACE = "타임스페이스",
+  JUNGLEWEB = "정글웹",
   TEMPLATE_HOTEL = "템플릿 숙박",
   TEMPLATE_CAFE = "템플릿 카페",
   TEMPLATE_PUB = "템플릿 펍",

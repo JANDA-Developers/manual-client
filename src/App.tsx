@@ -86,6 +86,16 @@ function App() {
             />
 
             <Route
+              path="/정글웹"
+              render={() => (
+                <HighRouter
+                  superClass={"정글웹"}
+                  bookingData={filterDataBySuperClass(Data, "정글웹")}
+                />
+              )}
+            />
+
+            <Route
               path="/템플릿 숙박"
               render={() => (
                 <HighRouter
